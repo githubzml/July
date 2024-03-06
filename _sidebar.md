@@ -1,17 +1,19 @@
 - HTML
 
-  - [标签](HTML/测试1.md)
+  - [标签](HTML/test1.md)
 
-    - [标签2](HTML/测试2.md)
+    - [标签 2](HTML/test2.md)
 
 - CSS
 
-  - [居中布局](CSS/居中.md)
+  - [居中布局](CSS/center.md)
   <!-- - [公众平台](CONTACT.md) -->
 
 - Vue
 
-  - [Vue slot](Vue/测试2.md)
+  - [Vue slot](Vue/test2.md)
+
+- [单词](Word/index.md)
 
 <!-- - Gradle
   - [Deploy](deploy.md)
