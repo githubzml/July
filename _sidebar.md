@@ -19,9 +19,9 @@
 
 - [单词](Word/index.md)
 
-- 计算机基础
+- [计算机基础](ComputerBase/index.md)
 
-  - [进制转换](ComputerBase/index.md)
+- [算法](Algorithm/index.md)
 
 <!-- - Gradle
   - [Deploy](deploy.md)
