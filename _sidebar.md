@@ -1,3 +1,7 @@
+- Markdown 语法
+
+  - [设置字体，颜色，大小](Mk_SYNTAX/index.md)
+
 - HTML
 
   - [标签](HTML/test1.md)
@@ -14,6 +18,10 @@
   - [Vue slot](Vue/test2.md)
 
 - [单词](Word/index.md)
+
+- 计算机基础
+
+  - [进制转换](ComputerBase/index.md)
 
 <!-- - Gradle
   - [Deploy](deploy.md)
