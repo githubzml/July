@@ -23,6 +23,8 @@
 
 - [算法](Algorithm/index.md)
 
+- [Git Command](Git/index.md)
+
 <!-- - Gradle
   - [Deploy](deploy.md)
 - 其他小工具
