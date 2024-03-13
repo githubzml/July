@@ -25,6 +25,8 @@
 
 - [Git Command](Git/index.md)
 
+- [TypeScript](TypeScript/index.md)
+
 <!-- - Gradle
   - [Deploy](deploy.md)
 - 其他小工具
