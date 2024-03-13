@@ -62,3 +62,14 @@ hash 值只要输入 4 位 以上就可以执行
 - git checkout -b xxx origin/xxx 将远程分支获取至本地仓库
 
 - git pull origin feature-D 获取远端分支最新代码
+
+# 查看分支之间的差别
+
+- 版本差别
+
+https://github.com/rails/rails/compare/4-0-stable...3-2-stable
+
+- 几天前的差别
+  https://github.com/rails/rails/compare/master@{7.day.ago}...master
+
+- day week month year
