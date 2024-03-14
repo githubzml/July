@@ -73,3 +73,7 @@ https://github.com/rails/rails/compare/4-0-stable...3-2-stable
   https://github.com/rails/rails/compare/master@{7.day.ago}...master
 
 - day week month year
+
+- 查看与指定日期之间的差别
+
+  https://github.com/rails/rails/compare/master@{2013-01-01}...master
