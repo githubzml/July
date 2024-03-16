@@ -77,3 +77,37 @@ https://github.com/rails/rails/compare/4-0-stable...3-2-stable
 - 查看与指定日期之间的差别
 
   https://github.com/rails/rails/compare/master@{2013-01-01}...master
+
+# git fetch 和 git pull 区别
+
+1. git fetch：Git git 会将数据拉取到本地仓库 - 它并不会自动合并或修改当前的工作。
+
+2. git pull：git pull 是从远程获取最新版本并 merge 到本地，会自动合并或修改当前的工作。
+
+3. 使用后 commitID 不同。
+
+- fetch：使用 fetch 更新代码，本地的库中 master 的 commitID 不变，还是等于 1。
+
+- pull：使用 pull 更新代码，本地的库中 master 的 commitID 发生改变，变成了 2。
+
+4. git pull = git fetch + git merge
+
+# Pull request 中 Merge pull request/Squash and merge/Rebase and merge 区别
+
+1.  Merge pull request 直接合并
+2.  Squash and merge 意思是压缩 提交 言外意思将一下小的改动 压缩为一个提交 防止记录过多 不好追溯
+3.  Rebase and merge 产生日志记录的合并
+    $ git checkout dev
+    $ git rebase -i master
+    $ git checkout master
+    $ git merge dev
+
+<!-- git remote add upstream git:https://github.com/ituring/first-pr -->
+
+给原仓库设置名称
+
+git remote add upstream git:XXX
+
+获取原仓库最新数据
+
+git fetch upstream
