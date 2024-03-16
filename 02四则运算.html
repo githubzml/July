@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // eval 执行表达式函数
+    let x = 4;
+    let y = 3;
+    console.log(eval("x + y")); // 7
+    console.log(eval("x - y")); // 1
+    console.log(eval("x * y")); // 12
+    console.log(eval("x / y")); // 1.33333...
+
+
+    // charAt 一种字符串的方法 用于检索字符串中特定位置的字符
+    let a = "abc";
+    console.log(a.charAt(1)); // 下标为_1_的字符为 b
+
+    // let flag = ["+", "-", "*", "/",""]
+    let flag = ["*", ""]
+    let func = () => {
+      for (let i = 1000; i < 10000; i++) {
+        let c = String(i);
+        for (let j = 0; j < flag.length; j++) {
+          for (let k = 0; k < flag.length; k++) {
+            for (let l = 0; l < flag.length; l++) {
+              let val = c.charAt(3) + flag[j] + c.charAt(2) + flag[k] + c.charAt(1) + flag[l] + c.charAt(0);
+              if (val.length > 4) {
+                if (i == eval(val)) {
+                  console.log(val + "=" + i);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    func();
+  </script>
+</body>
+
+</html>
