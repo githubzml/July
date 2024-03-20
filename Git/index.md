@@ -111,3 +111,98 @@ git remote add upstream git:XXX
 获取原仓库最新数据
 
 git fetch upstream
+
+# git tag
+
+```bash
+# 直接给当前的提交版本创建一个 【附注标签】
+$ git tag -a [标签名称] -m [附注信息]
+
+# 给指定的提交版本创建一个【附注标签】
+$ git tag -a [标签名称] [提交版本号] -m [附注信息]
+
+```
+
+- -a：理解为 annotated 的首字符，表示附注标签；
+
+- -m：指定附注信息；
+
+例如：
+
+```bash
+$ git tag -a v2.0 -m "v2.0版本正式发布"
+
+$ git tag -a v2.0-release 4489bac3 -m "v2.0版本正式发布"
+
+```
+
+### 查看 tag 标签
+
+1. 查看标签列表
+
+```bash
+# 查看所有标签列表
+$ git tag
+```
+
+2. 查看标签提交信息
+
+```bash
+# 查看标签的信息，（轻量标签 和 附注标签 的信息是不一样的）
+$ git show [标签名]
+```
+
+3. 删除 tag 标签
+
+```bash
+$ git tag -d [标签名称]
+```
+
+例如：
+
+```bash
+$ git tag -d test-2.0
+```
+
+## 远程仓库 tag 操作
+
+1. 推送 tag 标签到远程仓库
+
+```bash
+# 将指定的标签上传到远程仓库
+$ git push origin [标签名称]
+
+# 将所有不在远程仓库中的标签上传到远程仓库
+$ git push origin --tags
+
+```
+
+例如：
+
+```bash
+$ git push origin test-2.0
+```
+
+2. 删除远程仓库 tag 标签
+
+```bash
+$ git push origin --delete [标签名称]
+```
+
+例如：
+
+```bash
+$ git push origin --delete test-2.0
+```
+
+## 检出标签
+
+检出标签的理解：是在这个标签的基础上进行其他的开发或操作。
+
+检出标签的操作实质：是以标签指定的版本为基础版本，新建一个分支，继续其他的操作。
+
+因此 ，就是新建分支的操作了。
+
+```bash
+$ git checkout -b [分支名称] [标签名称]
+```

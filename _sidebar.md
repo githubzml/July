@@ -27,6 +27,8 @@
 
 - [TypeScript](TypeScript/index.md)
 
+- [Bug](Bug/index.md)
+
 <!-- - Gradle
   - [Deploy](deploy.md)
 - 其他小工具
