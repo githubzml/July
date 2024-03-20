@@ -8,3 +8,5 @@ improve 改善，增进
 vulnerability 漏洞
 uncover 揭露，揭开盖子
 a number of (=many) 大量
+
+annotated 给...做注释
