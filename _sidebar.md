@@ -29,6 +29,8 @@
 
 - [Bug](Bug/index.md)
 
+- [Chrome-version](Chrome/index.md)
+
 <!-- - Gradle
   - [Deploy](deploy.md)
 - 其他小工具
