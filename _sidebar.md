@@ -13,6 +13,10 @@
   - [居中布局](CSS/center.md)
   <!-- - [公众平台](CONTACT.md) -->
 
+- JavaScript
+
+  - [ES6](JS/index.md)
+
 - Vue
 
   - [Vue slot](Vue/test2.md)
@@ -31,6 +35,7 @@
 
 - [Chrome-version](Chrome/index.md)
 
+- [Mac 快捷键](Mac/index.md)
 <!-- - Gradle
   - [Deploy](deploy.md)
 - 其他小工具
