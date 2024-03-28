@@ -21,6 +21,8 @@
 
   - [Vue slot](Vue/test2.md)
 
+  - [Vue 界面优化](Vue/jiemian.md)
+
 - [单词](Word/index.md)
 
 - [计算机基础](ComputerBase/index.md)
@@ -36,6 +38,8 @@
 - [Chrome-version](Chrome/index.md)
 
 - [Mac 快捷键](Mac/index.md)
+
+- [问题](Question/index.md)
 <!-- - Gradle
   - [Deploy](deploy.md)
 - 其他小工具
