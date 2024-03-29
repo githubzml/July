@@ -13,9 +13,15 @@
   - [居中布局](CSS/center.md)
   <!-- - [公众平台](CONTACT.md) -->
 
+- JavaScript
+
+  - [ES6](JS/index.md)
+
 - Vue
 
   - [Vue slot](Vue/test2.md)
+
+  - [Vue 界面优化](Vue/jiemian.md)
 
 - [单词](Word/index.md)
 
@@ -31,6 +37,13 @@
 
 - [Chrome-version](Chrome/index.md)
 
+- [Mac 快捷键](Mac/index.md)
+
+- [Vite](Vite/index.md)
+
+- [问题](Question/index.md)
+
+<!-- "unplugin-auto-import": "^0.17.5", -->
 <!-- - Gradle
   - [Deploy](deploy.md)
 - 其他小工具
