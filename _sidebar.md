@@ -39,7 +39,11 @@
 
 - [Mac 快捷键](Mac/index.md)
 
+- [Vite](Vite/index.md)
+
 - [问题](Question/index.md)
+
+<!-- "unplugin-auto-import": "^0.17.5", -->
 <!-- - Gradle
   - [Deploy](deploy.md)
 - 其他小工具
