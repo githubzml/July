@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let arr1 = [{ name: "Foo", age: 24 }, { name: "Bar", age: 25 }, { name: "Kale", age: 26 }]
+    let arr2 = [{ name: "Foo", age: 24 }, { name: "Bar", age: 25 }]
+    // 交集
+    let arr3 = arr1.filter(item => arr2.some(item2 => item.name === item2.name));
+
+    console.log(123, arr3);
+
+    // 差集
+    let arr4 = arr1.filter(item => !arr2.some(item2 => item.name === item2.name));
+
+    console.log(123, arr4);
+
+    let arr51 = [{ name: "Foo", age: 24 }, { name: "Bar", age: 25 }, { name: "Kale", age: 26 }]
+    let arr52 = [{ name: "Foo", age: 24 }, { name: "Bar", age: 25 }, { name: "Jack", age: 26 }]
+
+    let arr61 = [...arr51, ...arr52];
+    // 并集
+    function abc(arr61) {
+      let arr1 = [], arr2 = [];
+      for (const iterator of arr61) {
+        if (!arr1.includes(iterator.name)) {
+          arr1.push(iterator.name);
+          arr2.push(iterator)
+        }
+      }
+      return arr2
+    }
+
+    let aaa = abc(arr61);
+
+    console.log("aaa", aaa);
+  </script>
+</body>
+
+</html>
