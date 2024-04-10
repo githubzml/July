@@ -25,3 +25,7 @@
   </template>
 </BaseLayout>
 ```
+
+### const 和 Vue3 readonly 区别
+
+都可作为只读代理
