@@ -156,6 +156,7 @@ https://blog.csdn.net/qq_54469537/article/details/129308643
 https://zhuanlan.zhihu.com/p/621143675
 
 ---
+
 npm 包升级问题
 
 节流 去抖动问题
@@ -164,8 +165,15 @@ npm 包升级问题
 
 https://juejin.cn/post/7145365108275806239
 
-Vite
+---
 
-Typescript + SWC
+Vite 中 Typescript + SWC 和 不加 SWC 区别
 
-和 不加 SWC 区别
+https://cn.vitejs.dev/guide/performance.html#use-lesser-or-native-tooling
+
+官网原话 减少源文件（JS/TS/CSS）的工作量
+通俗理解 swc 加快编译速度
+
+参考链接：
+https://view.inews.qq.com/qd/20230118A042YJ00
+
