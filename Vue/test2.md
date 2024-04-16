@@ -1,6 +1,6 @@
 # vue
 
-### 示例 1
+### slot 示例 1
 
 ```html
 <div class="container">
@@ -128,32 +128,6 @@ nextTick() 方法就是在这样的 DOM 更新循环结束后调用指定函数
 与第三方库集成 确保动画 或者 绘图 在正确的元素上运行
 
 nextTick() 可以帮助你确保 DOM 已经更新并准备好与第三方库集成。
-
----
-
-浏览器事件循环机制和 JavaScript 事件循环机制是一个概念，只是叫法不同。
-
-JavaScript 事件循环机制分为 JS 调用栈和任务队列两部分。
-
-原文链接：https://blog.csdn.net/snowball_li/article/details/125236024
-
----
-
-JS 调用栈
-
-https://cloud.tencent.com/developer/article/2286409?areaSource=102001.3&traceId=4Yo70OL432uVSlimM7MtD
-
----
-
-事件循环机制
-
-链接从输入电脑 到形成界面 这一过程 发生了什么？
-
-https://blog.csdn.net/yuanchangliang/article/details/107799202
-https://www.php.cn/faq/583990.html
-https://blog.csdn.net/sunyctf/article/details/129106742
-https://blog.csdn.net/qq_54469537/article/details/129308643
-https://zhuanlan.zhihu.com/p/621143675
 
 ---
 

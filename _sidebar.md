@@ -17,11 +17,17 @@
 
   - [ES6](JS/index.md)
 
+  - [高级](JS/高级.md)
+
 - Vue
 
-  - [Vue slot](Vue/test2.md)
+  - [Vue](Vue/test2.md)
 
   - [Vue 界面优化](Vue/jiemian.md)
+
+  - [Vue3 全局变量](Vue/vue3全局变量.md)
+
+- [浏览器](浏览器/index.md)
 
 - [单词](Word/index.md)
 
