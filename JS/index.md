@@ -1,4 +1,4 @@
-# Set 数据结构
+## Set 数据结构
 
 Set 没有重复的值
 
@@ -50,3 +50,36 @@ if (properties2.has(someName)) {
   // do something
 }
 ```
+
+## 原型相关
+
+Object.hasOwn()
+
+如果指定的对象自身有指定的属性，则静态方法 Object.hasOwn() 返回 true。如果属性是继承的或者不存在，该方法返回 false。
+
+```js
+Object.hasOwn(obj, prop);
+```
+
+:exclamation: 备注 ： Object.hasOwn() 旨在取代 Object.prototype.hasOwnProperty()。
+
+### 直接属性和继承属性
+
+以下示例区分了直接属性和通过原型链继承的属性：
+
+```js
+const example = {};
+example.prop = "exists";
+
+// `hasOwn` 静态方法只会对目标对象的直接属性返回 true：
+Object.hasOwn(example, "prop"); // 返回 true
+Object.hasOwn(example, "toString"); // 返回 false
+Object.hasOwn(example, "hasOwnProperty"); // 返回 false
+
+// `in` 运算符对目标对象的直接属性或继承属性均会返回 true：
+"prop" in example; // 返回 true
+"toString" in example; // 返回 true
+"hasOwnProperty" in example; // 返回 true
+```
+
+---
