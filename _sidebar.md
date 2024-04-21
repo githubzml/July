@@ -27,6 +27,8 @@
 
   - [Vue3 全局变量](Vue/vue3全局变量.md)
 
+  - [vue-router](Vue/vue-router.md)
+
 - [浏览器](浏览器/index.md)
 
 - [单词](Word/index.md)
@@ -50,6 +52,8 @@
 - [Vite](Vite/index.md)
 
 - [问题](Question/index.md)
+
+- [常见问题，命令](Question/questionCommand.md)
 
 <!-- "unplugin-auto-import": "^0.17.5", -->
 <!-- - Gradle
