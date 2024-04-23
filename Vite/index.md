@@ -47,3 +47,47 @@ export default defineConfig({
   ],
 
 ```
+
+# VSCode 中，TS 提示 ”无法找到 \*.vue 声明文件“ 的解决方案
+
+1. env.d.ts (有则追加，无则新建。内容如下)
+
+```ts
+declare module "*.vue" {
+  import { defineComponent } from "vue";
+  const Component: ReturnType<typeof defineComponent>;
+  export default Component;
+}
+```
+
+2. 在 ”tsconfig.json“ 中，将第二步中创建的文件 "env.d.ts"（或者你自己新建的其他名称的 .d.ts 文件）添加到 include 中
+
+# vite+vue3+ts 中的 vue-router 基本配置
+
+```ts
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import { routes } from "./routes";
+// 对RouteRecordRaw类型进行扩展
+export type AddRouteRecordRaw = RouteRecordRaw & {
+  hidden?: boolean;
+};
+
+export const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [...routes] as AddRouteRecordRaw[],
+});
+```
+
+# package.json "exports". The 'vuex' library may need to update its package.js
+
+tsconfig.json
+
+```json
+"compilerOptions": {
+  ...
+    "paths": {
+      "@/*": ["src/*"],
+      "vuex": ["./node_modules/vuex/types"] // 关键代码
+    }
+  },
+```

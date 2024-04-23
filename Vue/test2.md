@@ -157,3 +157,9 @@ https://view.inews.qq.com/qd/20230118A042YJ00
 
 1. 全局组件即使它没有被实际使用，它仍然会出现在打包后的 JS 文件中（不会被 “tree-sharking”）
 2. 在父组件中使用子组件 不太容易定位子组件的实现 和过多使用的全局变量一样 可能会影响应用长期的可维护性
+
+### vue3 使用 element-plus 动态渲染 Icon 图标
+
+```code
+<el-icon><component :is="item.icon" /></el-icon>
+```
