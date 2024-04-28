@@ -163,3 +163,47 @@ https://view.inews.qq.com/qd/20230118A042YJ00
 ```code
 <el-icon><component :is="item.icon" /></el-icon>
 ```
+
+### v-model 可以在组件上使用以实现双向绑定 defineModel() 宏
+
+v-model 可以在组件上使用以实现双向绑定。
+
+从 Vue 3.4 开始，推荐的实现方式是使用 defineModel() 宏：
+
+```vue
+<!-- Child.vue -->
+<script setup>
+const model = defineModel();
+
+function update() {
+  model.value++;
+}
+</script>
+
+<template>
+  <div>parent bound v-model is: {{ model }}</div>
+</template>
+```
+
+父组件可以用 v-model 绑定一个值：
+
+```vue
+<!-- Parent.vue -->
+<Child v-model="countModel" />
+```
+
+在 3.4 版本之前，你一般会按照如下的方式来实现上述相同的子组件：
+
+```vue
+<script setup>
+const props = defineProps(["modelValue"]);
+const emit = defineEmits(["update:modelValue"]);
+</script>
+
+<template>
+  <input
+    :value="props.modelValue"
+    @input="emit('update:modelValue', $event.target.value)"
+  />
+</template>
+```
