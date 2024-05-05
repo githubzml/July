@@ -49,3 +49,15 @@ npm outdated
 ```js
 npm install <package-name>@<version>
 ```
+
+查找当前下载镜像
+
+```js
+npm config get registry
+```
+
+设置下载镜像
+
+```js
+ npm config set registry https://registry.npmmirror.com
+```

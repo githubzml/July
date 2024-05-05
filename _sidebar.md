@@ -55,6 +55,8 @@
 
 - [常见问题，命令](Question/questionCommand.md)
 
+- [Vue 3.x + TypeScript 实践指南](Book/vue3TypeScript.md)
+
 <!-- "unplugin-auto-import": "^0.17.5", -->
 <!-- - Gradle
   - [Deploy](deploy.md)
