@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <button id="count">点我</button>
+    <div id="show"></div>
+  </div>
+  <script>
+    let Event = (function () {
+      let clientList = {},
+        listen,
+        trigger,
+        reomve;
+      listen = function (key, fn) {
+        if (!clientList[key]) {
+          clientList[key] = []
+        }
+        clientList[key].push(fn)
+      }
+      trigger = function () {
+
+        let key = Array.prototype.shift.call(arguments),
+          fns = clientList[key];
+        if (!fns || fns.length === 0) {
+          return false
+        }
+        for (let i = 0, fn; fn = fns[i++];) {
+          fn.apply(this, arguments)
+        }
+      }
+      reomve = function (key, fn) {
+        let fns = clientList[key];
+        if (!fns) {
+          return false;
+        }
+        if (!fn) {
+          fns && (fns.length = 0)
+        } else {
+          for (let l = fns.length - 1; l >= 0; l--) {
+            let _fn = fns[l];
+            if (_fn === fn) {
+              fns.splice(l, 1)
+            }
+          }
+        }
+      }
+
+      return {
+        listen,
+        trigger,
+        reomve
+      }
+    })()
+
+    Event.listen("square88", fn1 = function (price) {
+      console.log("价格1" + price);
+    })
+
+    Event.listen("square88", fn2 = function (price) {
+      console.log("价格2" + price);
+    })
+
+    Event.reomve("square88", fn1)
+
+    Event.trigger("square88", 2000000)
+
+    let count = 0
+
+    let a = (function () {
+      document.getElementById("count").onclick = function () {
+        Event.trigger('add', count++);
+      }
+    })()
+
+    let b = (function () {
+      let div = document.getElementById("show");
+      Event.listen("add", function () {
+        div.innerHTML = count;
+      })
+    })()
+
+  </script>
+</body>
+
+</html>

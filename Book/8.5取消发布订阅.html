@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let event = {
+      clientList: {},
+      listen: function (key, fn) {
+        if (!this.clientList[key]) {
+          this.clientList[key] = [];
+        }
+        this.clientList[key].push(fn); // 订阅消息添加到缓存列表
+      },
+      trigger: function () {
+        let key = Array.prototype.shift.call(arguments),
+          fns = this.clientList[key];
+        if (!fns || fns.length === 0) { // 如果没有对应的消息绑定
+          return false
+        }
+        for (let i = 0, fn; fn = fns[i++];) {
+          fn.apply(this, arguments);
+        }
+      },
+      remove: function (key, fn) {
+        let fns = this.clientList[key];
+        if (!fns) { // 如果 key 对应的消息没有被人订阅，则直接返回
+          return;
+        }
+        if (!fn) { // 如果没有传入具体的回调函数 ，则表示需要取消 key 对应消息的所有订阅
+          fns && (fns.length = 0);
+        } else {
+          for (let l = fns.length - 1; l >= 0; l--) {
+            let _fn = fns[l];
+            if (_fn === fn) {
+              fns.splice(l, 1) // 删除订阅者回调函数
+            }
+          }
+        }
+      }
+    }
+    // 取消订阅
+
+
+    let installEvent = function (obj) {
+      for (const key in event) {
+        if (Object.hasOwnProperty.call(event, key)) {
+          obj[key] = event[key]
+        }
+      }
+    }
+
+    let salesOffices = {};
+    installEvent(salesOffices);
+
+    // 发布订阅通用实现
+    // salesOffices.listen("square88", function (price) { // 小明订阅的消息
+    //   console.log("价格=" + price);
+    // })
+
+    // salesOffices.listen("square110", function (price) { // 小红订阅的消息
+    //   console.log("价格=" + price);
+    // })
+
+    // salesOffices.trigger('square88', 2000000)
+    // salesOffices.trigger('square110', 3000000)
+
+    // 取消-发布订阅
+    salesOffices.listen("square88", fn1 = function (price) { // 小明订阅的消息
+      console.log("价格1=" + price);
+    })
+
+    salesOffices.listen("square88", fn2 = function (price) { // 小红订阅的消息
+      console.log("价格2=" + price);
+    })
+
+    salesOffices.remove('square88', fn1)
+
+    salesOffices.trigger('square88', 2000000)
+  </script>
+</body>
+
+</html>

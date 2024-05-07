@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let salesOffices = {};
+    salesOffices.clientClient = {};
+    salesOffices.listen = function (key, fn) {
+      if (!this.clientClient[key]) {
+        this.clientClient[key] = []
+      }
+      this.clientClient[key].push(fn)
+    }
+    salesOffices.trigger = function () {
+      let key = Array.prototype.shift.call(arguments),
+        fns = this.clientClient[key];
+      if (!fns || fns.length === 0) {
+        return false;
+      }
+      for (let i = 0, fn; fn = fns[i++];) {
+        fn.apply(this, arguments)
+      }
+    }
+
+    salesOffices.listen("squareMeter88", function (price) { // 小明订阅 88 平方米房子的消息
+      console.log("价格=" + price); // 输出 2000000
+    })
+
+    salesOffices.listen("squareMeter110", function (price) { // 小红订阅 110 平方米房子的消息
+      console.log("价格=" + price);
+    })
+
+    salesOffices.trigger("squareMeter88", 2000000) // 发布 88 平米房子的价格
+
+    salesOffices.trigger("squareMeter110", 3000000) // 发布 88 平米房子的价格
+  </script>
+</body>
+
+</html>

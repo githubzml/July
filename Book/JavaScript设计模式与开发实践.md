@@ -113,9 +113,9 @@ document.getElementById("loginBtn").onclick = function () {
 // 创建对象和管理单例的职责被分布在两个不同的方法，组合起来才是最合适的单例模式
 ```
 
-### 5.6 表单验证
+## 5.6 表单验证
 
-### 5.8 策略模式计算奖金
+## 5.8 策略模式计算奖金
 
 ```js
 // strategies 策略模式计算奖金
@@ -137,6 +137,146 @@ let calculateBonus = function (func, salary) {
 };
 
 console.log("123", calculateBonus(S, 10000)); // 40000
+```
+
+## 6.6 虚拟代理合并 http 请求
+
+```html
+<div>
+  <input type="checkbox" id="1" />1 <input type="checkbox" id="2" />2
+  <input type="checkbox" id="3" />3 <input type="checkbox" id="4" />4
+  <input type="checkbox" id="5" />5 <input type="checkbox" id="6" />6
+  <input type="checkbox" id="7" />7 <input type="checkbox" id="8" />8
+  <input type="checkbox" id="9" />9
+</div>
+```
+
+```js
+let checkbox = document.getElementsByTagName("input");
+
+let synchronousFile = function (id) {
+  console.log(`开始同步id为：${id}`);
+};
+
+let proxySynchronousFile = (function () {
+  let cache = [],
+    timer;
+
+  return function (id) {
+    cache.push(id);
+    if (timer) {
+      return;
+    }
+    timer = setTimeout(function () {
+      synchronousFile(cache.join(","));
+      clearTimeout(timer);
+      timer = null;
+      cache.length = 0;
+    }, 2000);
+  };
+})();
+
+for (let i = 0; i < checkbox.length; i++) {
+  let c = checkbox[i];
+  c.onclick = function () {
+    if (this.checked === true) {
+      proxySynchronousFile(this.id);
+    }
+  };
+}
+```
+
+## 8.6 发布订阅模式
+
+```html
+<div>
+  <button id="count">点我</button>
+  <div id="show"></div>
+</div>
+```
+
+```js
+let Event = (function () {
+  let clientList = {},
+    listen,
+    trigger,
+    reomve;
+  listen = function (key, fn) {
+    if (!clientList[key]) {
+      clientList[key] = [];
+    }
+    clientList[key].push(fn);
+  };
+  trigger = function () {
+    let key = Array.prototype.shift.call(arguments),
+      fns = clientList[key];
+    if (!fns || fns.length === 0) {
+      return false;
+    }
+    for (let i = 0, fn; (fn = fns[i++]); ) {
+      fn.apply(this, arguments);
+    }
+  };
+  reomve = function (key, fn) {
+    let fns = clientList[key];
+    if (!fns) {
+      return false;
+    }
+    if (!fn) {
+      fns && (fns.length = 0);
+    } else {
+      for (let l = fns.length - 1; l >= 0; l--) {
+        let _fn = fns[l];
+        if (_fn === fn) {
+          fns.splice(l, 1);
+        }
+      }
+    }
+  };
+
+  return {
+    listen,
+    trigger,
+    reomve,
+  };
+})();
+
+console.log("=================  取消订阅  ==============");
+
+Event.listen(
+  "square88",
+  (fn1 = function (price) {
+    console.log("价格1" + price);
+  })
+);
+
+Event.listen(
+  "square88",
+  (fn2 = function (price) {
+    console.log("价格2" + price);
+  })
+);
+
+Event.reomve("square88", fn1);
+
+Event.trigger("square88", 2000000);
+
+console.log("================ 模块间通信 ===============");
+
+let count = 0;
+
+let a = (function () {
+  document.getElementById("count").onclick = function () {
+    Event.trigger("add", count++);
+  };
+})();
+
+let b = (function () {
+  let div = document.getElementById("show");
+  Event.listen("add", function () {
+    div.innerHTML = count;
+  });
+})();
 ```
 
 ### 判断数据类型

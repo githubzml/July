@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let order500 = function (orderType, pay, stock) {
+      if (orderType === 1 && pay) {
+        console.log("500元定金预购，得到 100 元优惠卷");
+      } else {
+        return "nextSuccessor"
+      }
+    }
+    let order200 = function (orderType, pay, stock) {
+      if (orderType === 2 && pay) {
+        console.log("200元定金预购，得到 50 元优惠卷");
+      } else {
+        return "nextSuccessor"
+      }
+    }
+    let orderNormal = function (orderType, pay, stock) {
+      if (stock > 0) {
+        console.log("普通购买，无优惠卷");
+      } else {
+        console.log("手机库存不足");
+      }
+    }
+
+    function Chain(fn) {
+      this.fn = fn;
+      this.successor = null;
+    }
+
+    Chain.prototype.setNextSuccessor = function (successor) {
+      return this.successor = successor
+    }
+
+    Chain.prototype.passRequest = function () {
+      let ret = this.fn.apply(this, arguments);
+      return ret;
+    }
+
+    // 职责链。。。待完善
+
+    let chainOrder500 = new Chain(order500);
+    let chainOrder200 = new Chain(order200);
+
+    // chainOrder500.passRequest(1, true, 500)
+    chainOrder500.passRequest(2, true, 500)
+  </script>
+</body>
+
+</html>
