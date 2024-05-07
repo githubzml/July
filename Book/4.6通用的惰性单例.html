@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="loginBtn">按钮</button>
+  <script>
+    // 管理单例职责
+    let getSingle = function (fn) {
+      let result
+      return function () {
+        return result || (result = fn.apply(this, arguments))
+      }
+    }
+
+    // 创建对象职责
+    let createLoginLayer = function () {
+      let div = document.createElement("div");
+      div.innerHTML = "我是登录弹框";
+      div.style.display = 'none';
+      document.body.appendChild(div);
+      console.log(333);
+      return div;
+    }
+
+
+    let createSingleLoginLayer = getSingle(createLoginLayer);
+
+    document.getElementById("loginBtn").onclick = function () {
+      let abc = createSingleLoginLayer();
+      abc.style.display = 'block'
+    }
+
+    // 创建对象和管理单例的职责被分布在两个不同的方法，组合起来才是最合适的单例模式
+  </script>
+</body>
+
+</html>

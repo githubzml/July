@@ -57,6 +57,8 @@
 
 - [Vue 3.x + TypeScript 实践指南](Book/vue3TypeScript.md)
 
+- [JavaScript 设计模式与开发实践.md](Book/JavaScript设计模式与开发实践.md)
+
 <!-- "unplugin-auto-import": "^0.17.5", -->
 <!-- - Gradle
   - [Deploy](deploy.md)

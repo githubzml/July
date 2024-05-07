@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let aa = [1, 3, 5, 2, 6, 8, 7];
+    console.log(Math.min.apply("", aa));
+
+    let bb = ["M", "N", "O", "P"];
+    let obj = bb.shift();
+    console.log("obj", obj);
+    console.log("bb", bb);
+
+    let cc = [9, 8, 7];
+
+    let dd = cc.unshift(5, 6);
+
+    console.log(cc);
+    console.log(dd);
+  </script>
+</body>
+
+</html>

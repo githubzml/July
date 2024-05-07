@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let timeChunk = function (ary, fn, count) {
+      let obj,
+        t;
+
+      let len = ary.length;
+
+      let start = function () {
+        for (let i = 0; i < Math.min(count || 1, ary.length); i++) {
+          let obj = ary.shift();
+          fn(obj);
+        }
+      }
+
+      return function () {
+        t = setInterval(function () {
+          if (ary.length === 0) { // 全部节点创建完毕
+            return clearInterval(t);
+          }
+          start()
+        }, 200)
+      }
+    }
+
+    let ary = [];
+
+    for (let i = 0; i < 1000; i++) {
+      ary.push(i)
+    }
+
+    let renderFriendList = timeChunk(ary, function (n) {
+      let div = document.createElement("div");
+      div.innerHTML = n;
+      document.body.appendChild(div)
+    }, 8)
+
+    renderFriendList();
+  </script>
+</body>
+
+</html>
