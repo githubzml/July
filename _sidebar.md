@@ -57,7 +57,9 @@
 
 - [Vue 3.x + TypeScript 实践指南](Book/vue3TypeScript.md)
 
-- [JavaScript 设计模式与开发实践.md](Book/JavaScript设计模式与开发实践.md)
+- [JavaScript 设计模式与开发实践](Book/JavaScript设计模式与开发实践.md)
+
+- [概念](Concept/index.md)
 
 <!-- "unplugin-auto-import": "^0.17.5", -->
 <!-- - Gradle

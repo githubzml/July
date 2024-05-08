@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 500 元订单
+    let order500 = function (orderType, pay, stock) {
+      if (orderType === 1 && pay === true) {
+        console.log("500元订金预购，得到100元优惠卷");
+      } else {
+        order200(orderType, pay, stock)
+      }
+    }
+
+    // 200 元订单
+    let order200 = function (orderType, pay, stock) {
+      if (orderType === 2 && pay === true) {
+        console.log("200元订金预购，得到50元优惠卷");
+      } else {
+        orderNormal(orderType, pay, stock)
+      }
+    }
+
+    // 普通订单
+    let orderNormal = function (orderType, pay, stock) {
+      if (stock > 0) {
+        console.log("普通购买，无优惠卷");
+      } else {
+        console.log("手机库存不足");
+      }
+    }
+
+    order500(1, true, 500) // 500元订金预购，得到100元优惠卷
+    order500(1, false, 500) // 普通购买，无优惠卷
+    order500(2, true, 500) // 200元订金预购，得到50元优惠卷
+    order500(3, false, 500) // 普通购买，无优惠卷
+    order500(3, false, 0)  // 手机库存不足
+  </script>
+</body>
+
+</html>

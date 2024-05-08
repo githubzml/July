@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    下拉选择框 colorSelect
+    文本输入框 numberInput
+    展示颜色信息 colorInfo
+    展示购买数量信息 numberInfo
+    决定下一步操作按钮 nextBtn
+   -->
+
+  选择颜色： <select id="colorSelect">
+    <option value="">请选择</option>
+    <option value="red">红色</option>
+    <option value="blue">蓝色</option>
+  </select>
+
+  输入购买数量：<input type="text" id="numberInput">
+  <div style="margin-top: 50px;"></div>
+  您选择了颜色：<div id="colorInfo"></div>
+  <div style="margin-top: 40px;"></div>
+  您输入了数量：<div id="numberInfo"></div>
+  <div style="margin-top: 40px;"></div>
+  <button id="nextBtn" disabled="true">请选择手机颜色和购买数量</button>
+
+  <script>
+    let colorSelect = document.getElementById("colorSelect"),
+      numberInput = document.getElementById("numberInput"),
+      colorInfo = document.getElementById("colorInfo"),
+      numberInfo = document.getElementById("numberInfo"),
+      nextBtn = document.getElementById("nextBtn");
+
+    let goods = {
+      "red": 3,
+      "blue": 6
+    }
+
+
+    colorSelect.onchange = function () {
+      let color = this.value,
+        number = numberInput.value,
+        stock = goods[color];
+
+      colorInfo.innerHTML = color;
+
+      if (!color) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "请选择手机颜色";
+        return
+      }
+
+      if (((number - 0) || 0) !== number - 0) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "请输入正确购买数量"
+        return
+      }
+
+      if (number > stock) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "库存不足"
+        return
+      }
+      numberInfo.innerHTML = number;
+      nextBtn.disabled = false;
+      nextBtn.innerHTML = "放入购物车"
+    }
+
+    numberInput.onchange = function () {
+      let color = colorSelect.value,
+        number = this.value,
+        stock = goods[color];
+
+      console.log("color", color);
+
+      numberInfo.innerHTML = number;
+
+      if (!color) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "请选择手机颜色";
+        return
+      }
+
+      if (((number - 0) || 0) !== number - 0) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "请输入正确购买数量"
+        return
+      }
+
+      if (number > stock) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "库存不足"
+        return
+      }
+
+      nextBtn.disabled = false;
+      nextBtn.innerHTML = "放入购物车"
+    }
+  </script>
+</body>
+
+</html>

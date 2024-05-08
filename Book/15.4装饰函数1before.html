@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 给对象动态增加职责的方式称为装饰器模式 decorator -->
+  <!-- 不改变函数源码的情况下，给函数增加功能 开放-封闭原则 -->
+  <button id="btn">点击</button>
+  <script>
+    // // bed
+    // let a = function () {
+    //   alert(1)
+    // }
+    // // 改成
+    // let a = function () {
+    //   alert(1)
+    //   alert(2)
+    // }
+    // // good
+
+    // let a = function () {
+    //   alert(1)
+    // }
+
+    // let _a = a;
+    // a = function () {
+    //   _a();
+    //   alert(2)
+    // }
+
+    // 不确定这个事件是不是已经被其他人绑定过
+
+    window.onload = function () {
+      alert(1)
+    }
+
+    let _onload = window.onload || function () { }
+
+    window.onload = function () {
+      _onload();
+      alert(2)
+    }
+
+
+
+    Function.prototype.before = function (beforeFn) {
+      let _self = this;
+      return function () {
+        beforeFn.apply(this, arguments);
+        return _self.apply(this, arguments);
+      }
+    }
+
+    document.getElementById = document.getElementById.before(function () {
+      console.log(1);
+    });
+
+    let btn = document.getElementById("btn")
+
+    console.log(2)
+
+  </script>
+</body>
+
+</html>

@@ -115,6 +115,8 @@ document.getElementById("loginBtn").onclick = function () {
 
 ## 5.6 表单验证
 
+待完善
+
 ## 5.8 策略模式计算奖金
 
 ```js
@@ -279,7 +281,308 @@ let b = (function () {
 })();
 ```
 
-### 判断数据类型
+## 13.3 职责链简易模式
+
+```js
+// 500 元订单
+let order500 = function (orderType, pay, stock) {
+  if (orderType === 1 && pay === true) {
+    console.log("500元订金预购，得到100元优惠卷");
+  } else {
+    order200(orderType, pay, stock);
+  }
+};
+
+// 200 元订单
+let order200 = function (orderType, pay, stock) {
+  if (orderType === 2 && pay === true) {
+    console.log("200元订金预购，得到50元优惠卷");
+  } else {
+    orderNormal(orderType, pay, stock);
+  }
+};
+
+// 普通订单
+let orderNormal = function (orderType, pay, stock) {
+  if (stock > 0) {
+    console.log("普通购买，无优惠卷");
+  } else {
+    console.log("手机库存不足");
+  }
+};
+
+order500(1, true, 500); // 500元订金预购，得到100元优惠卷
+order500(1, false, 500); // 普通购买，无优惠卷
+order500(2, true, 500); // 200元订金预购，得到50元优惠卷
+order500(3, false, 500); // 普通购买，无优惠卷
+order500(3, false, 0); // 手机库存不足
+```
+
+### 14.3.4 引入中介者模式
+
+```html
+<!-- 
+    下拉选择框 colorSelect
+    文本输入框 numberInput
+    展示颜色信息 colorInfo
+    展示购买数量信息 numberInfo
+    决定下一步操作按钮 nextBtn
+   -->
+
+选择颜色：
+<select id="colorSelect">
+  <option value="">请选择</option>
+  <option value="red">红色</option>
+  <option value="blue">蓝色</option>
+</select>
+
+<div style="margin-top: 40px;"></div>
+
+选择内存：
+<select id="memorySelect">
+  <option value="">请选择</option>
+  <option value="32G">32G</option>
+  <option value="16G">16G</option>
+</select>
+
+输入购买数量：<input type="text" id="numberInput" />
+<div style="margin-top: 50px;"></div>
+您选择了颜色：
+<div id="colorInfo"></div>
+<div style="margin-top: 40px;"></div>
+您选择了内存：
+<div id="memoryInfo"></div>
+<div style="margin-top: 40px;"></div>
+您输入了数量：
+<div id="numberInfo"></div>
+<div style="margin-top: 40px;"></div>
+<button id="nextBtn" disabled="true">请选择手机颜色和购买数量</button>
+```
+
+```js
+let colorSelect = document.getElementById("colorSelect"),
+  memorySelect = document.getElementById("memorySelect"),
+  numberInput = document.getElementById("numberInput"),
+  colorInfo = document.getElementById("colorInfo"),
+  memoryInfo = document.getElementById("memoryInfo"),
+  numberInfo = document.getElementById("numberInfo"),
+  nextBtn = document.getElementById("nextBtn");
+
+let goods = {
+  "red|32G": 3,
+  "red|16G": 0,
+  "blue|32G": 1,
+  "blue|16G": 6,
+};
+
+let meditor = (function () {
+  return {
+    changed: function (obj) {
+      let color = colorSelect.value,
+        memory = memorySelect.value,
+        stock = goods[color + "|" + memory],
+        number = numberInput.value;
+
+      if (obj === colorSelect) {
+        colorInfo.innerHTML = color;
+      } else if (obj === memorySelect) {
+        memoryInfo.innerHTML = memory;
+      } else if (obj === numberInput) {
+        numberInfo.innerHTML = number;
+      }
+
+      if (!color) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "请选择手机颜色";
+        return;
+      }
+
+      if (!memory) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "请选择内存大小";
+        return;
+      }
+
+      if ((number - 0 || 0) !== number - 0) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "请输入正确购买数量";
+        return;
+      }
+
+      if (number > stock) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "库存不足";
+        return;
+      }
+
+      nextBtn.disabled = false;
+      nextBtn.innerHTML = "放入购物车";
+    },
+  };
+})();
+
+colorSelect.onchange = function () {
+  meditor.changed(this);
+};
+memorySelect.onchange = function () {
+  meditor.changed(this);
+};
+numberInput.onchange = function () {
+  meditor.changed(this);
+};
+```
+
+## 15.4 装饰器模式
+
+### 15.4.1 装饰函数 before
+
+```html
+<!-- 给对象动态增加职责的方式称为装饰器模式 decorator -->
+<!-- 不改变函数源码的情况下，给函数增加功能 开放-封闭原则 -->
+<button id="btn">点击</button>
+```
+
+```js
+// // bed
+// let a = function () {
+//   alert(1)
+// }
+// // 改成
+// let a = function () {
+//   alert(1)
+//   alert(2)
+// }
+// // good
+
+// let a = function () {
+//   alert(1)
+// }
+
+// let _a = a;
+// a = function () {
+//   _a();
+//   alert(2)
+// }
+
+// 不确定这个事件是不是已经被其他人绑定过
+
+window.onload = function () {
+  alert(1);
+};
+
+let _onload = window.onload || function () {};
+
+window.onload = function () {
+  _onload();
+  alert(2);
+};
+
+Function.prototype.before = function (beforeFn) {
+  let _self = this;
+  return function () {
+    beforeFn.apply(this, arguments);
+    return _self.apply(this, arguments);
+  };
+};
+
+document.getElementById = document.getElementById.before(function () {
+  console.log(1);
+});
+
+let btn = document.getElementById("btn");
+
+console.log(2);
+```
+
+### 15.4.2 装饰函数 after
+
+```js
+Function.prototype.after = function (afterFn) {
+  let _self = this;
+  return function () {
+    let ret = _self.apply(this, arguments);
+    afterFn.apply(this, arguments);
+    return ret;
+  };
+};
+
+window.onload = (window.onload || function () {})
+  .after(function () {
+    console.log(2);
+  })
+  .after(function () {
+    console.log(3);
+  })
+  .after(function () {
+    console.log(4);
+  });
+```
+
+### 15.4.3 装饰函数非污染原型
+
+```js
+let before = function (fn, beforeFn) {
+  return function () {
+    beforeFn.apply(this, arguments);
+    return fn.apply(this, arguments);
+  };
+};
+
+let a = before(
+  function () {
+    alert(3);
+  },
+  function () {
+    alert(2);
+  }
+);
+a = before(a, function () {
+  alert(1);
+});
+a();
+```
+
+### 15.4.4 数据统计上报 Demo
+
+```html
+<button id="login">点击打开登录浮层</button>
+```
+
+```js
+// not-good
+// let showLogin = function () {
+//   console.log("打开登录浮层");
+
+//   log()
+// }
+
+// let log = function () {
+//   console.log("上报标签为")
+// }
+
+// document.getElementById("login").onclick = showLogin
+
+// 装饰器模式 good
+
+Function.prototype.after = function (afterFn) {
+  let _self = this;
+  return function () {
+    let ret = _self.apply(this, arguments);
+    afterFn.apply(this, arguments);
+    return ret;
+  };
+};
+
+let showLogin = function () {
+  console.log("打开登录浮层");
+};
+
+document.getElementById("login").onclick = showLogin.after(function () {
+  console.log("上报标签为");
+});
+```
+
+## 判断数据类型
 
 ```js
 let isType = function (type) {
