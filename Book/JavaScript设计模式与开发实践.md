@@ -582,6 +582,178 @@ document.getElementById("login").onclick = showLogin.after(function () {
 });
 ```
 
+## 17.2 适配器模式
+
+```js
+// 适配器模式应用场景
+// 解决两个已有接口之间不匹配问题
+// 适配器模式不需要改变已有接口 就能够使它们协同作用
+let getGZ = function () {
+  let GZCity = [
+    {
+      name: "shenzhen",
+      id: 11,
+    },
+    {
+      name: "guangzhou",
+      id: 12,
+    },
+  ];
+
+  return GZCity;
+};
+
+let render = function (fn) {
+  document.write(JSON.stringify(fn()));
+};
+
+let addressAdapter = function (oldAddressfn) {
+  let address = {},
+    oldAddress = oldAddressfn();
+  for (let i = 0, c; (c = oldAddress[i++]); ) {
+    address[c.name] = c.id;
+  }
+  return function () {
+    return address;
+  };
+};
+
+// render(getGZ) 原始方法
+
+// 目标数据结构
+let GZCity2 = {
+  shenzhen: "11",
+  guangzhou: "12",
+  zhuhai: "13",
+};
+
+// addressAdapter 添加适配器后的方法
+render(addressAdapter(getGZ));
+```
+
+## 22.1 提炼函数
+
+改变前
+
+```js
+let getUserInfo = function () {
+  ajax("http://xxx.com.userInfo", function (data) {
+    console.log("userId:" + data.userId);
+    console.log("userName:" + data.usrName);
+    console.log("nickName:" + data.nickName);
+  });
+};
+```
+
+改变后
+
+```js
+let getUserInfo = function () {
+  ajax("http://xxx.com.userInfo", function (data) {
+    printDetail(data);
+  });
+};
+let printDetail = function (data) {
+  console.log("userId:" + data.userId);
+  console.log("userName:" + data.usrName);
+  console.log("nickName:" + data.nickName);
+};
+```
+
+## 22.2 合并重复的条件片段
+
+改变前
+
+```js
+let paging = function (curPage) {
+  if (curPage <= 0) {
+    curPage = 0;
+    jump(curPage);
+  } else if (curPage >= totalPage) {
+    curPage = totalPage;
+    jump(curPage);
+  } else {
+    jump(curPage);
+  }
+};
+```
+
+改变后
+
+```js
+let paging = function (curPage) {
+  if (curPage <= 0) {
+    curPage = 0;
+  } else if (curPage >= totalPage) {
+    curPage = totalPage;
+  }
+  jump(curPage);
+};
+```
+
+## 22.3 把条件分支语句提炼成函数
+
+改变前
+
+```js
+let getPrice = function (price) {
+  let date = new Date();
+  if (date.getMonth() >= 6 && date.getMonth() <= 9) {
+    return price * 0.8;
+  }
+  return price;
+};
+```
+
+改变后
+
+```js
+let isSummer = function () {
+  let date = new Date();
+  return date.getMonth() >= 6 && date.getMonth() <= 9; // 夏天
+};
+
+let getPrice = function (price) {
+  if (isSummer) {
+    return price * 0.8;
+  }
+  return price;
+};
+```
+
+## 22.6 传递对象参数代替过长的参数列表
+
+改变前
+
+```js
+let setUserInfo = function (id, name, address, sex, mobile, qq) {
+  console.log("id=" + id);
+  console.log("name=" + name);
+  console.log("address=" + address);
+  console.log("sex=" + sex);
+  console.log("mobile=" + mobile);
+  console.log("qq=" + qq);
+};
+
+setUserInfo(1314, "seven", "beijing", "male", "137********", 373878897);
+```
+
+改变后
+
+```js
+let setUserInfo = function (obj) {
+  let { id, name, address, sex, mobile, qq } = obj;
+};
+setUserInfo({
+  id: 1314,
+  name: "seven",
+  address: "beijing",
+  sex: "male",
+  mobile: "137********",
+  qq: 373878897,
+});
+```
+
 ## 判断数据类型
 
 ```js

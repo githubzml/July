@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="btn">按钮</button>
+    <script>
+      // 代理模式
+      try {
+        let proxyImage = (function () {
+          let img = new Image();
+          img.onload = function () {
+            myImage.setSrc(this.src);
+          };
+          return {
+            setSrc: function (src) {
+              myImage.setSrc("file:// /Deaktop/loading.gif");
+              img.src = src;
+            },
+          };
+        })();
+
+        proxyImage.setSrc("http://imgcache.qq.commusic/phone.jpg");
+      } catch (error) {
+        console.log(error);
+      }
+      // 单例模式
+
+      let getSingle = function (fn) {
+        let result;
+        return function () {
+          return result || (result = fn.apply(this, arguments));
+        };
+      };
+
+      let createLoginLayer = function () {
+        // 创建登录浮窗
+        let div = document.createElement("div");
+        div.innerHTML = "我是登录浮窗";
+        div.style.display = "none";
+        document.body.append(div);
+        return div;
+      };
+
+      let createSIngleLoginLayer = getSingle(createLoginLayer);
+
+      document.getElementById("btn").onclick = function () {
+        let loginLayer3 = createSIngleLoginLayer();
+        loginLayer3.style.display = "block";
+      };
+      let loginLayer1 = createSIngleLoginLayer();
+      let loginLayer2 = createSIngleLoginLayer();
+
+      console.log(loginLayer1 === loginLayer2);
+    </script>
+  </body>
+</html>

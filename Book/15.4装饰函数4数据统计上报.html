@@ -1,50 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  <body>
+    <button id="login">点击打开登录浮层</button>
+    <script>
+      // not-good
+      // let showLogin = function () {
+      //   console.log("打开登录浮层");
 
-<body>
-  <button id="login">点击打开登录浮层</button>
-  <script>
+      //   log()
+      // }
 
-    // not-good
-    // let showLogin = function () {
-    //   console.log("打开登录浮层");
+      // let log = function () {
+      //   console.log("上报标签为")
+      // }
 
-    //   log()
-    // }
+      // document.getElementById("login").onclick = showLogin
 
-    // let log = function () {
-    //   console.log("上报标签为")
-    // }
+      // 装饰器模式 good
 
-    // document.getElementById("login").onclick = showLogin
+      Function.prototype.after = function (afterFn) {
+        let _self = this;
+        return function () {
+          let ret = _self.apply(this, arguments);
+          afterFn.apply(this, arguments);
+          return ret;
+        };
+      };
 
-    // 装饰器模式 good
+      let showLogin = function () {
+        console.log("打开登录浮层");
+      };
 
-    Function.prototype.after = function (afterFn) {
-      let _self = this;
-      return function () {
-        let ret = _self.apply(this, arguments);
-        afterFn.apply(this, arguments);
-        return ret
-      }
-    }
-
-    let showLogin = function () {
-      console.log("打开登录浮层");
-    }
-
-    document.getElementById("login").onclick = showLogin.after(function () {
-      console.log("上报标签为")
-    })
-
-
-  </script>
-</body>
-
+      document.getElementById("login").onclick = showLogin.after(function () {
+        console.log("上报标签为");
+      });
+    </script>
+  </body>
 </html>
