@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let event = {
+      lists: {},
+      listen: function (key, fn) {
+        if (!this.lists[key]) {
+          this.lists[key] = []
+        }
+        this.lists[key].push(fn)
+      },
+      trigger: function (key) {
+        let args = [...arguments].slice(1);
+        let fns = this.lists[key];
+        if (!fns || fns.length === 0) {
+          return;
+        }
+
+        for (let i = 0, fn; fn = fns[i++];) {
+          fn.apply(this, args)
+        }
+      },
+
+      remove: function (key, fn) {
+        let fns = this.lists[key]
+        if (!fns) {
+          return; // 消息没人订阅则直接返回
+        }
+
+        if (!fn) {
+          fns.length = 0; // 取消key 所对应的所有消息队列
+        }
+
+        for (let i = fns.length - 1; i >= 0; i--) {
+          let _fn = fns[i]
+          if (_fn === fn) {
+            fns.splice(i, 1) // 删除订阅
+          }
+        }
+
+
+      }
+    }
+
+    // event.listen("square88", function (price) {
+    //   console.log("价格为price:" + price);
+    // })
+
+    event.listen("square88", fn1 = function (...params) {
+      console.log("价格为price:" + params);
+    })
+
+    event.listen("square110", function (price) {
+      console.log("价格为price:" + price);
+    })
+
+    // event.trigger("square88", 2000000, 3)
+
+    event.remove("square88", fn1)
+
+
+    event.trigger("square110", 3000000)
+
+  </script>
+</body>
+
+</html>
