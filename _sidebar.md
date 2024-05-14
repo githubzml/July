@@ -59,6 +59,8 @@
 
 - [JavaScript 设计模式与开发实践](Book/JavaScript设计模式与开发实践.md)
 
+- [Vue.js 技术内幕](Book/Vue.js技术内幕.md)
+
 - [概念](Concept/index.md)
 
 - [面试](Interview/index.md)
