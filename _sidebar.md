@@ -65,6 +65,10 @@
 
 - [面试](Interview/index.md)
 
+- [移动端适配问题](移动端适配/index.md)
+
+- [大屏适配问题](大屏适配/index.md)
+
 <!-- "unplugin-auto-import": "^0.17.5", -->
 <!-- - Gradle
   - [Deploy](deploy.md)
