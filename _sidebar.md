@@ -61,6 +61,8 @@
 
 - [概念](Concept/index.md)
 
+- [古文观止](古文观止/index.md)
+
 <!-- "unplugin-auto-import": "^0.17.5", -->
 <!-- - Gradle
   - [Deploy](deploy.md)
