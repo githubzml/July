@@ -63,6 +63,8 @@
 
 - [概念](Concept/index.md)
 
+- [古文观止](古文观止/index.md)
+
 - [面试](Interview/index.md)
 
 - [移动端适配问题](移动端适配/index.md)
