@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function deepClone(source) {
+      if (typeof source !== "object" || source == null) {
+        return source
+      }
+      const target = Array.isArray(source) ? [] : {};
+      for (const key in source) {
+        if (Object.hasOwnProperty.call(source, key)) {
+          target[key] = deepClone[source[key]]
+        } else {
+          target[key] = source[key]
+        }
+      }
+      return target
+    }
+  </script>
+</body>
+
+</html>

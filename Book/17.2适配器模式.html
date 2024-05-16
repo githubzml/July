@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 适配器模式应用场景
+    // 解决两个已有接口之间不匹配问题
+    // 适配器模式不需要改变已有接口 就能够使它们协同作用
+    let getGZ = function () {
+      let GZCity = [{
+        name: "shenzhen",
+        id: 11
+      }, {
+        name: "guangzhou",
+        id: 12
+      }]
+
+      return GZCity
+    }
+
+    let render = function (fn) {
+      document.write(JSON.stringify(fn()))
+    }
+
+    let addressAdapter = function (oldAddressfn) {
+      let address = {},
+        oldAddress = oldAddressfn();
+      for (let i = 0, c; c = oldAddress[i++];) {
+        address[c.name] = c.id
+      }
+      return function () {
+        return address
+      }
+    }
+
+    // render(getGZ) 原始方法
+
+    // 目标数据结构
+    let GZCity2 = {
+      shenzhen: "11",
+      guangzhou: "12",
+      zhuhai: '13'
+    }
+
+    // addressAdapter 添加适配器后的方法
+    render(addressAdapter(getGZ))
+  </script>
+</body>
+
+</html>

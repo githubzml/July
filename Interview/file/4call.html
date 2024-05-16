@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let throttle = function (fn, time = 2000) {
+      let isFirst = true,
+        timer;
+      return function () {
+        console.log("arguments", arguments);
+        if (isFirst) {
+          isFirst = false;
+          fn.apply(this, arguments)
+          return;
+        }
+        if (timer) {
+          return
+        }
+        timer = setTimeout(function () {
+          clearTimeout(timer);
+          timer = null;
+          fn.apply(this, arguments)
+        }, time || 1000)
+      }
+    }
+    window.onresize = throttle(function () {
+      console.log(123);
+    }, 5000)
+  </script>
+</body>
+
+</html>

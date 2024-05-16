@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function _new(context) {
+      let obj = new Object();
+      obj.__proto__ = context.prototype;
+      let res = context.apply(obj, [...arguments].slice(1));
+      console.log("res=>", res);
+      return typeof res === "object" ? res : obj;
+    }
+
+    function B() {
+      return {
+        abc: "abc"
+      }
+    }
+
+    B.prototype.name = "bbbbbb";
+
+    // let b = _new(B);
+
+    // console.log("b instanceof B", b instanceof B);
+
+    // let c = "ccc"
+
+    // let b = _new(c);
+
+    function myNew(context) {
+      console.log("Object.prototype.toString.call(context)", Object.prototype.toString.call(context));
+      if (Object.prototype.toString.call(context) !== "[object Function]") {
+        return;
+      }
+      const obj = new Object();
+      obj.__proto__ = context.prototype;
+      const res = context.apply(obj, [...arguments].slice(1));
+      console.log("res2", res);
+      return typeof res === "object" ? res : obj;
+    }
+
+    let d = "ccc"
+
+    let e = myNew(B);
+
+
+  </script>
+</body>
+
+</html>

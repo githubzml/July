@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      value: "mn"
+    }
+
+    function a() {
+      console.log(this.value);
+    }
+
+    // let f = "abv"
+
+
+
+    Function.prototype._call = function (obj) {
+      if (typeof this !== "function") {
+        throw new Error("类型错误");
+      }
+      console.log(222, arguments);
+      let result;
+      let args = [...arguments].slice(1);
+      let context = obj || window
+      context.fn = this;
+      result = context.fn(...args);
+      delete context.fn;
+      return result;
+    }
+
+    a._call(obj, 2, 3, 4);
+
+
+
+
+
+  </script>
+</body>
+
+</html>
