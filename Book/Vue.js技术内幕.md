@@ -135,6 +135,6 @@ vnode 的性能一定比手动操作原生 DOM 要好吗？其实不一定，分
 
 源码目录
 
-C:\zml\zml2024learn\vue3_yuanma\core
+C:\zml\zml2024learn\项目源码\vue3 源码核心\core
 
 待完善
