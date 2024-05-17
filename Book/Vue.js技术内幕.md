@@ -101,3 +101,40 @@ vue 是面向用户的完整构建，包含运行时版本和带编译器的版�
 - vue-compat
 
 它是 Vue.js 3.x 的一个构建版本，提供可以配置的 Vue.js 2.x 兼容行为。
+
+## 3.1 什么是 vnode
+
+vnode 本质上是用来描述 DOM 的 JavaScript 对象
+
+### 3.1.1 普通元素 vnode
+
+```html
+<button class="btn" style="width:100px;height:50px"></button>
+```
+
+可以用 vnode 这样表示 <button> 标签
+
+```js
+const vnode = {
+  type: "button",
+  props: {
+    class: "btn",
+    style: {
+      width: "100px",
+      height: "50px",
+    },
+  },
+};
+```
+
+vnode 的性能一定比手动操作原生 DOM 要好吗？其实不一定，分情况
+
+比如，对于一个 1000 行 x 10 列的 Table 组件，组件渲染生成 vnode 的过程会遍历 1000 行 x 10 次去创建内部 cell vnode,整体耗时就会比较长。再加上挂载 vnode 生成 DOM 的过程也会有一定的耗时，所以当我们更新组件的时候，用户就会感觉到明显卡顿。
+
+虽然 diff 算法在减少操作 DOM 方面足够优秀，但最终还是免不了操作 DOM ，因此性能并不是 vnode 的优势所在。
+
+源码目录
+
+C:\zml\zml2024learn\vue3_yuanma\core
+
+待完善
