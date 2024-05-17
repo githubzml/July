@@ -207,3 +207,13 @@ const emit = defineEmits(["update:modelValue"]);
   />
 </template>
 ```
+
+### Teleport
+
+套在别处渲染的组件或者 DOM 节点外部， 通过 to 这个 prop 去指定到渲染位置。
+
+```vue
+<teleport to="#app">
+  <Dialog></Dialog>
+</teleport>
+```
