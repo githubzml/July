@@ -63,6 +63,8 @@
 
 - [HTML5 移动 Web 开发（第 2 版）](Book/HTML5移动Web开发（第2版）.md)
 
+- [Web 前端性能优化](Book/Web前端性能优化.md)
+
 - [概念](Concept/index.md)
 
 - [古文观止](古文观止/index.md)
