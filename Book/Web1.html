@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function mkFunc() {
+        const name = "Tian";
+        return function () {
+          console.log(name);
+        };
+      }
+
+      const myFunc = mkFunc();
+
+      myFunc();
+
+      // console.time("222");
+      // let len2 = 100000;
+      // let str2 = "";
+      // while (len2--) {
+      //   str2 = str2 + "a" + "b";
+      // }
+
+      // console.timeEnd("222");
+
+      console.time();
+      let len = 100000;
+      let str = "";
+      while (len--) {
+        str += "a" + "b";
+
+        // str = str + "a" + "b";
+      }
+
+      console.timeEnd();
+    </script>
+  </body>
+</html>
