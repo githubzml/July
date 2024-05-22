@@ -1,4 +1,6 @@
-# 从浏览器地址栏输入 url 到请求返回发生了什么
+# 优化方向
+
+## 从浏览器地址栏输入 url 到请求返回发生了什么
 
 1. 输入 URL 后解析出协议
 
@@ -24,9 +26,13 @@
 
 7. 断开 TCP 连接
 
+# 第 3 章 图像优化
+
+## 3.2 图像优化
+
 ### 3.2.1 JPEG
 
-1. 压缩模式
+压缩模式
 
 基线式 JPEG 加载顺序是自上而下的。
 
@@ -39,6 +45,8 @@
 待完善~
 
 # 第 5 章 书写高性能代码
+
+## 5.1 数据存取
 
 ### 5.1.2 作用域和作用域链
 
@@ -114,6 +122,8 @@ function calculateBonus(level, salary) {
 
 # 第 6 章 构建优化
 
+## 6.1 压缩与合并
+
 ### 6.1.1 压缩 HTML
 
 ```js
@@ -156,7 +166,6 @@ fs.readFile("./test.html", "utf8", (err, data) => {
 比如
 
 ```js
-
 const path = require('path');
 module.exports = {
   entry: {
@@ -223,8 +232,169 @@ module.exports = {
 
 # 第 7 章 渲染优化
 
+## 7.2 JavaScript 执行优化
+
 ### 7.2.1 实现动画效果
 
 推荐使用 requestAnimationFrame 代替 JavaScript 的 setInterval 所产生动画。
 
+### 7.2.2 恰当使用 Web Worker
+
 ### 7.2.3 事件节流和事件防抖
+
+## 7.3 计算样式优化
+
+### 7.3.1 减少要计算样式的元素数量
+
+CSS 引擎在查找样式表时，每条规则的匹配顺序是从右向左的
+
+比如
+
+```css
+.product-list li {
+}
+```
+
+CSS 引擎需要首先遍历页面上的所有 li 标签元素，然后确认每个 li 标签有包含类名为 product-list 的父元素才是目标元素，所以为了提高页面的渲染性能，计算样式阶段应当尽量减少参与样式计算的元素数量。
+
+建议 1. product-list 下的 li 标签规则可以直接定义为 product-list_li
+
+建议 2. 通常在编写 CSS 样式前都会有使用通配符去清除默认样式的习惯
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 16px;
+  font: inherit;
+  vertical-align: baseline;
+}
+```
+
+规模较小的 Demo 中,几乎看不出有任何的性能差异。但对实际的工程项目来说，使用通配符就意味着在计算样式时，浏览器需要遍历页面中的每一个元素，性能开销很大，应当避免使用。
+
+### 7.3.2 降低选择器的复杂性
+
+```css
+/* bad */
+.content #my-content
+/* good */
+#my-content;
+```
+
+### 7.3.3 使用 BEM 规范
+
+Block Element Modifier
+
+中划线(-):表示某个块或子元素的多个单词之间的连接符。
+单划线(\_):作为描述一个块或其子元素的一种状态。
+双线划线(\_\_):作为连接块与块的子元素
+
+例子
+
+```css
+/* bad */
+.mylist {
+}
+.mylist .item {
+}
+/* good */
+.mylist {
+}
+.mylist__item {
+}
+```
+
+```css
+.mylist__item_big {
+}
+.mylist__item_normal {
+}
+.mylist__item_small {
+}
+
+.mylist__item_size-10 {
+}
+```
+
+BEM 样式编码规范建议所有元素都被单一的类选择器修饰，从 CSS 代码角度来说这样不但更加清晰，而且由于样式查找得到简化，渲染阶段的样式计算性能也会得到提升。
+
+## 7.4 页面布局与重绘的优化
+
+### 7.4.2 避免样式的频繁改动
+
+1. 样式改变，统一更改类名
+
+<!-- 反例bad -->
+
+```js
+const div = document.getElementById("my-div");
+div.style.height = "100px";
+div.style.width = "100px";
+div.style.backgroundColor = "red";
+```
+
+可以 CSS 类名预先定义
+
+<!-- 正例 good -->
+
+```css
+.my-div {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+}
+```
+
+然后统一指定元素添加类
+
+```js
+const div = document.getElementById("my-div");
+div.clssList.add("my-div");
+```
+
+2. 缓存对敏感属性值的计算
+
+```js
+const list = document.getElementById("list");
+for (let i = 0; i < 10; i++) {
+  list.style.top = `${list.offsetTop + 10}px`;
+  list.style.left = `${list.offsetLeft + 10}px`;
+}
+```
+
+```js
+const list = document.getElementById("list");
+// 将敏感属性缓存起来
+let offsetTop = list.offsetTop,
+  offsetLeft = list.offsetLeft;
+
+for (let i = 0; i < 10; i++) {
+  offsetTop += 10;
+  offsetLeft += 10;
+}
+
+// 计算完成后统一赋值进行触发
+list.style.left = `${offsetLeft}px`;
+list.style.top = `${offsetTop}px`;
+```
+
+# 第 8 章 服务端渲染
+
+# 第 10 章 缓存技术
+
+![alt text](image-6.png)
+
+- 强制缓存
+
+expries 仍然存在，其目的是为了保持向下兼容。为了弥补 expries 的缺陷，HTTP 1.1 规范新增 cache-control 。其值有 max-age 设置缓存时间，（cache-control: max-age=31536000）;有
+no-store 不缓存;有 no-cache 开启协商缓存。
+
+- 协商缓存
+
+首次请求 last-modified（last-modified: Mon, 01 Jan 2018 00:00:00 GMT）。Etag 为了弥补，假设资源修改发生在毫秒级， HTTP 1.1 规范新增（类似文件指纹）。
+
+再次请求 if-modified-since 值 是 last-modified 的值；if-none-match 值 是 Etag 的值。 验证缓存的新鲜度 判断是返回时 304 还是 200。
+
+严格按照规范进行开发，设计，实施。
