@@ -1,6 +1,13 @@
 # VSCode
 
+mac
+
 shift + option + ↓ 复制一整行
+
+win
+
+alt+↓ 或 ↑：快速移动一行
+shift+alt+↓：快速复制一行
 
 # 常用插件
 

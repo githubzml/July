@@ -67,6 +67,8 @@
 
 - [深入浅出 node](Book/深入浅出node.md)
 
+- [NodeJS 基础到实战](Book/NodeJS基础到实战.md)
+
 - [概念](Concept/index.md)
 
 - [古文观止](古文观止/index.md)
