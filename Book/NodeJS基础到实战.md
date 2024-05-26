@@ -613,3 +613,245 @@ index.html
 ```
 
 ![alt text](NodeJS基础到实战/assets/image.png)
+
+### 工具模块
+
+#### util.callbackify
+
+```js
+const util = require("util");
+
+async function fn() {
+  return "hello world";
+}
+const callbackFunction = util.callbackify(fn);
+
+callbackFunction((err, ret) => {
+  if (err) throw err;
+  console.log(ret);
+});
+```
+
+#### util.promisify(original)
+
+```js
+const util = require("node:util");
+const fs = require("node:fs");
+
+const stat = util.promisify(fs.stat);
+stat(".")
+  .then((stats) => {
+    // Do something with `stats`
+    console.log(123);
+  })
+  .catch((error) => {
+    // Handle the error.
+  });
+```
+
+```js
+const util = require("node:util");
+const fs = require("node:fs");
+
+const stat = util.promisify(fs.stat);
+
+async function callStat() {
+  const stats = await stat(".");
+  console.log(`This directory is owned by ${stats.uid}`);
+}
+```
+
+#### util.deprecate(fn, msg[, code])
+
+```js
+const util = require("node:util");
+
+exports.obsoleteFunction = util.deprecate(() => {
+  // Do something here.
+}, "obsoleteFunction() is deprecated. Use newShinyFunction() instead.");
+```
+
+#### util.types.isDate(value)
+
+```js
+util.types.isDate(new Date());
+```
+
+### Readline 逐行读取内容
+
+```js
+const fs = require("node:fs");
+const readline = require("node:readline");
+
+const rl = readline.createInterface({
+  input: fs.createReadStream("sample.txt"),
+  crlfDelay: Infinity,
+});
+
+rl.on("line", (line) => {
+  console.log(`Line from file: ${line}`);
+});
+```
+
+```js
+const readline = require("node:readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: "OHAI> ",
+});
+
+rl.prompt();
+
+rl.on("line", (line) => {
+  switch (line.trim()) {
+    case "hello":
+      console.log("world!");
+      break;
+    default:
+      console.log(`Say what? I might have heard '${line.trim()}'`);
+      break;
+  }
+  rl.prompt();
+}).on("close", () => {
+  console.log("Have a great day!");
+  process.exit(0);
+});
+```
+
+### Internationalization Support
+
+### repl
+
+```js
+const repl = require("node:repl");
+
+const replServer = repl.start({ prompt: "> " });
+replServer.defineCommand("sayhello", {
+  help: "Say hello",
+  action(name) {
+    this.clearBufferedCommand();
+    console.log(`Hello, ${name}!`);
+    this.displayPrompt();
+  },
+});
+replServer.defineCommand("saybye", function saybye() {
+  console.log("Goodbye!");
+  this.close();
+});
+```
+
+### UDP
+
+server.js
+
+```js
+const dgram = require("node:dgram");
+const server = dgram.createSocket("udp4");
+
+server.on("error", (err) => {
+  console.log(`server error:\n${err.stack}`);
+  server.close();
+});
+
+server.on("message", (msg, rinfo) => {
+  console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
+});
+
+server.on("listening", () => {
+  const address = server.address();
+  console.log(`server listening ${address.address}:${address.port}`);
+});
+
+server.bind(41234);
+// Prints: server listening 0.0.0.0:41234
+```
+
+client.js
+
+```js
+const dgram = require("node:dgram");
+
+const client = dgram.createSocket("udp4");
+
+client.on("error", (err) => {
+  console.log(`client error:\n${err.stack}`);
+  client.close();
+});
+
+setInterval(() => {
+  client.send("Hello sunday", 41234, "localhost", (err, bytes) => {
+    // client.close();
+    console.log(`客户端发送了 ${bytes} 字节`);
+  });
+}, 1000);
+```
+
+### TCP
+
+server.js
+
+```js
+const net = require("node:net");
+const server = net.createServer((c) => {
+  c.write("from server!!!");
+
+  c.on("data", (data) => {
+    console.log("来自客户端的数据~", data.toString());
+  });
+
+  c.on("end", () => {
+    console.log("server close!!!");
+  });
+});
+
+server.on("error", (err) => {
+  throw err;
+});
+
+server.listen(8124, () => {
+  console.log("server listen on 8124");
+});
+```
+
+client.js
+
+```js
+const net = require("node:net");
+const client = net.connect({ port: 8124 }, () => {
+  client.write("from client!!!");
+
+  client.on("data", (data) => {
+    console.log("来自服务端的数据", data.toString());
+
+    client.end();
+  });
+});
+
+client.on("error", (err) => {
+  throw err;
+});
+
+client.on("end", () => {
+  console.log("client close!!!");
+});
+```
+
+### url
+
+```js
+const url = require("url");
+
+const myURL = new URL(
+  "https://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash"
+);
+
+console.log(myURL.protocol);
+console.log(myURL.username);
+console.log(myURL.hostname);
+console.log(myURL.pathname);
+console.log(myURL.search); // 参数
+console.log(myURL.searchParams.get("query"));
+console.log(myURL.hash);
+console.log(url.urlToHttpOptions(myURL)); // http 协议所有参数
+```
