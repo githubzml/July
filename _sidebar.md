@@ -69,6 +69,10 @@
 
 - [NodeJS 基础到实战](Book/NodeJS基础到实战.md)
 
+- [NodeJS 基础到实战\_进程](Book/NodeJS基础到实战_进程.md)
+
+- [NodeJS 基础到实战\_静态资源服务器](Book/NodeJS基础到实战_静态资源服务器.md)
+
 - [概念](Concept/index.md)
 
 - [古文观止](古文观止/index.md)

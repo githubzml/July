@@ -855,3 +855,110 @@ console.log(myURL.searchParams.get("query"));
 console.log(myURL.hash);
 console.log(url.urlToHttpOptions(myURL)); // http 协议所有参数
 ```
+
+### DNS
+
+DNS 解析过程
+
+浏览器缓存没有
+
+系统缓存没有
+
+网络 本地的 DNS 去查找
+
+直接去根 DNS 服务器去解析
+
+1. 浏览器中查找 如果没有
+
+chrome://net-internals/#dns
+
+2. 电脑缓存中找
+
+C:\Windows\System32\drivers\etc
+
+3. 网络 本地的 DNS 去查找
+
+4. 直接去根 DNS 服务器去解析
+
+···
+
+```js
+const dns = require("dns");
+
+dns.lookup("www.baidu.com", (err, address, family) => {
+  console.log("address: %j family: IPv%s", address, family);
+});
+
+dns.reverse("8.8.8.8", (err, hostnames) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log("reverse for 8.8.8.8: %j", hostnames);
+});
+
+const { Resolver } = require("node:dns");
+const resolver = new Resolver();
+resolver.setServers(["8.8.8.8"]);
+
+console.log("当前dns", resolver.getServers());
+
+// This request will use the server at 4.4.4.4, independent of global settings.
+resolver.resolve4("www.baidu.com", (err, addresses) => {
+  // ...
+  console.log("使用888的dns获取百度的IP", addresses);
+});
+```
+
+### http
+
+```js
+const http = require("http");
+const querystring = require("querystring");
+
+const server = http.createServer((req, res) => {
+  const { query } = require("url").parse(req.url, true);
+  // console.log("query", query);
+  // console.log("req", req.url);
+  // console.log("method", req.method);
+  const method = req.method.toLocaleUpperCase();
+  if (method === "GET") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end(`方法，GET，参数：${query.name || "World"}!`);
+  } else if (method === "POST") {
+    // 提供 body 的 x-www-form-urlencoded 格式
+    let body = "";
+    req.on("data", (chunk) => {
+      body += chunk;
+    });
+    req.on("end", () => {
+      let data = querystring.parse(body);
+      res.writeHead(200, { "Content-Type": "text/plain" });
+      res.end(`方法，POST，参数：${data.name || "World"}!`);
+    });
+  } else if (method === "PUT") {
+    let body = "";
+    req.on("data", (chunk) => {
+      body += chunk;
+    });
+    req.on("end", () => {
+      let data = querystring.parse(body);
+      res.writeHead(200, { "Content-Type": "text/plain" });
+      res.end(`方法，PUT，参数：${data.name || "World"}!`);
+    });
+  } else if (method === "DELETE") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end(`方法，DELETE，参数：${"delete"}!`);
+  } else {
+    console.log("===========");
+    res.end("未知");
+  }
+});
+
+server.listen(3210, () => {
+  console.log("Server running at http://localhost:3210/");
+});
+```
+
+![alt text](NodeJS基础到实战/assets/image-1.png)
+
+### TSL 证书
