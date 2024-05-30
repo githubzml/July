@@ -52,12 +52,18 @@ npm install <package-name>@<version>
 
 查找当前下载镜像
 
-```js
+```sh
 npm config get registry
 ```
 
-设置下载镜像
+将镜像设置 npm 镜像：
 
-```js
+```sh
+npm config set registry https://registry.npmjs.org/
+```
+
+将镜像设置阿里云镜像
+
+```sh
  npm config set registry https://registry.npmmirror.com
 ```

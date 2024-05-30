@@ -78,6 +78,8 @@ PS：文章中如果网站打不开，那就得考虑别的上网方式了，方
 
 ## 常用网站
 
+[react](https://react.dev/learn)
+
 [vuejs](https://cn.vuejs.org/guide/introduction.html)
 
 [Vue-Router](https://router.vuejs.org/zh/guide/)
