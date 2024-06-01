@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // static
+      // 加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为“静态方法”。
+      class Foo {
+        static classMethod() {
+          return "hello";
+        }
+      }
+
+      console.log(123, Foo.classMethod());
+
+      let foo = new Foo();
+
+      // console.log(234, foo.classMethod());
+
+      // 父类的静态方法，可以被子类继承。
+
+      class Bar extends Foo {}
+
+      console.log(345, Bar.classMethod());
+    </script>
+  </body>
+</html>

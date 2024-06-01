@@ -29,3 +29,50 @@ cross-env 通过其跨平台的兼容性、简化环境变量的设置、提高�
 NodeJS 保存自动更新
 
 [参考](https://www.npmjs.com/package/nodemon)
+
+ES6 class
+
+MVC 采用结构清晰的模式 方便后期维护
+
+res . end
+
+res.json()
+
+`sh` js
+
+---
+
+日志
+
+故障排查
+性能分析
+用户行为分析
+安全审计
+
+morgan
+
+file-stream-rotator ???
+
+process.env.NODE_ENV 项目启动时指定
+
+"file-stream-rotator": "^1.0.0",
+
+日志分割
+
+---
+
+validator
+
+form-data x-www-form-urlencoded raw
+
+区别
+
+Postman 使用教程
+
+https://www.jianshu.com/p/cbc34df2f008
+
+bnmvp
+
+zxcv123
+
+待整理~
