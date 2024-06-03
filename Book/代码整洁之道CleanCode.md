@@ -48,4 +48,37 @@
 
 # 第 2 章 有意义的命名
 
-2.2
+## 2.3 避免误导
+
+比如 o,l 像 0 和 1 避免使用此类命名
+
+## 2.4 做有意义的区分
+
+假设你有个 Product 类 有个 ProductData 类 或者 ProductData 类，那么虽然它们的名称虽然不同，意思却无区别。
+Info 和 Data 就像 a an the 一样,是含糊意义的废话。
+
+getActiveAccout();
+getActiveAccouts();
+getActiveAccoutInfo();
+
+程序员怎么知道该调用哪个函数呢？
+
+如果缺少明确约定，变量 moneyAccount 和 money 没有区别，customerInfo 和 customer 没有区别，theMessage 和 message 没有区别。要区分名称，就要以读者能鉴别不同之处来进行区分。
+
+## 2.5 使用读得出来的名称
+
+避免使用 genymhhms(生成年，月，日，时，分，秒)
+
+## 2.6 使用可搜索名称
+
+int realDayPerIdeaDay = 4;
+
+代码读的越多，眼中越没有前缀。最终前缀变成了不入法眼的边角料，变作了旧代码的标志物。
+
+## 2.9 类名
+
+类名和对象名应该是名词或者名词短语，Customer，WikiPage，Account 和 AddressParser。避免使用 Manager，Processor，Data 和 Info 这样的类名。类名不应该当动词。
+
+## 2.10 方法名
+
+方法名应当是动词或者动词短语 Postpayment,,deletePage 或者 save。
