@@ -76,3 +76,31 @@ bnmvp
 zxcv123
 
 待整理~
+
+---
+
+mysql 不能正常使用
+
+mysqld --console 查看 mysql 日志
+
+taskkill -pid 20504 -f #强制关进程
+
+https://blog.csdn.net/qq_31680395/article/details/80441267
+
+Do you already have another mysqld server running on port: 3306 ?
+
+mysqld --console --skip-grant-tables --shared-memory”
+
+https://baijiahao.baidu.com/s?id=1761959559424162329&wfr=spider&for=pc
+
+win10 powershell:cd Program Files (x86) 或报错 Set-Location : 找不到接受实际参数“Files”的位置形式参数
+
+https://blog.csdn.net/weixin_39773337/article/details/116398870
+
+redis-server 启动 redis 服务器
+
+新建命令行 redis-cli
+
+打开它的客户端
+
+![alt text](NodeJS基础到实战_博客/assets/image.png)
