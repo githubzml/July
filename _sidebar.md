@@ -79,6 +79,8 @@
 
 - [代码整洁之道 CleanCode](Book/代码整洁之道CleanCode.md)
 
+- [墨菲定理](Book/墨菲定理.md)
+
 - [概念](Concept/index.md)
 
 - [古文观止](古文观止/index.md)
