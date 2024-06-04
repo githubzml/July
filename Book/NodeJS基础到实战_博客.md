@@ -104,3 +104,9 @@ redis-server 启动 redis 服务器
 打开它的客户端
 
 ![alt text](NodeJS基础到实战_博客/assets/image.png)
+
+2024-06-04
+
+redis
+
+flashall 删除所有数据
