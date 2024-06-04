@@ -37,6 +37,31 @@
       }
 
       console.timeEnd();
+      console.log("========================================");
+      let aa = Math.random().toString(36).substring(2);
+
+      console.log(aa); // 小数点以后得内容
+      // 字符串方法
+      // toString
+      // substring
+      // substr
+
+      // 数组方法
+      // slice
+
+      setTimeout(() => {
+        console.log(1);
+      }, 0);
+      new Promise((resolve, reject) => {
+        console.log(2);
+        resolve("p1");
+        setTimeout(() => {
+          console.log(4);
+        }, 0);
+      }).then((data) => {
+        console.log(data);
+      });
+      console.log(6);
     </script>
   </body>
 </html>
