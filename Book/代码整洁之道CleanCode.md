@@ -82,3 +82,23 @@ int realDayPerIdeaDay = 4;
 ## 2.10 方法名
 
 方法名应当是动词或者动词短语 Postpayment,,deletePage 或者 save。
+
+add 添加,insert 插入,append 追加
+
+## 2.16 添加有意义语境
+
+firstName,lastName,stree,houseNumber,city,state,zipcode
+
+很明确构成一个地址。
+
+不过，假使只是在某个方法中看见孤零零一个变量 state 呢？你会理所当然推断那是某个地址的一部分吗？
+
+可以添加前缀 addrFirstName，addrlastName，addrState，更好的方案是创建一个 Address 的类。这样，即便是编译器也会知道这些变量隶属某个更大的概念了。
+
+# 第 3 章 函数
+
+## 3.1 短小
+
+&emsp;&emsp;函数第一规则要短小，第二规则是还要更短小。
+
+## 3.2 只做一件事
