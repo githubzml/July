@@ -102,3 +102,21 @@ firstName,lastName,stree,houseNumber,city,state,zipcode
 &emsp;&emsp;函数第一规则要短小，第二规则是还要更短小。
 
 ## 3.2 只做一件事
+
+## 3.6 函数参数
+
+最理想的参数数量是零，其次是一，再次是二，应尽量避免三。有足够的理由才能用三个以上参数——所以无论如何也不要这么做
+
+## 3.7 无副作用
+
+输出参数
+
+例如
+
+appendFooter(s); // 是调用还是返回值？？？
+
+换而言之
+
+最好的调用是
+
+report.appendFooter(s)
