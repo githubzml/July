@@ -120,3 +120,65 @@ appendFooter(s); // 是调用还是返回值？？？
 最好的调用是
 
 report.appendFooter(s)
+
+## 3.8 分割指令与询问
+
+好的代码
+
+```js
+if (attributeExist("username")){
+  setAttribute("uername"){
+
+  }
+}
+```
+
+## 3.9 使用异常代替返回码
+
+<!-- bad -->
+
+```js
+if (deletePage(page) == EOK) {
+  if (registry.deleteRefrence(page.name) == EOK) {
+    if (configKeys.deleteKey(page.name.makeKey()) == EOK) {
+      log("page delete");
+    } else {
+      log("configKey not deleted");
+    }
+  } else {
+    log("deleteRefrence from registry failed");
+  }
+} else {
+  log("delete failed");
+  return ERROR;
+}
+```
+
+<!-- good -->
+
+```js
+try {
+  deletePage(page)
+  registry.deleteRefrence(page.name)
+  configKeys.deleteKey(page.name.makeKey())
+} catch(Exception e) {
+  log(e.getMessage)
+}
+```
+
+### 3.9.1 抽离 Try/Catch 代码块
+
+Try/catch 代码块丑陋不堪。他们搞乱了代码结构，把错误处理和正常流程混为一谈。最好把 try 和 catch 代码块的主题抽离出来，另形成函数。
+
+```js
+try {
+  deletePageAndReference(page)
+}catch(Exception e){
+  logError(e)
+}
+
+
+function deletePageAndReference(){}
+function logError(){}
+
+```
