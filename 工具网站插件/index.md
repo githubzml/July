@@ -82,11 +82,23 @@ PS：文章中如果网站打不开，那就得考虑别的上网方式了，方
 
 [vuejs](https://cn.vuejs.org/guide/introduction.html)
 
+[Vite](https://cn.vitejs.dev/guide/)
+
+[reset-css](https://www.npmjs.com/package/reset-css)
+
+```sh
+npm i reset-css
+```
+
+[pinia](https://pinia.vuejs.org/zh/core-concepts/)
+
+```sh
+yarn add pinia
+```
+
 [Vue-Router](https://router.vuejs.org/zh/guide/)
 
 [element-plus](https://element-plus.org/zh-CN/)
-
-[Vite](https://cn.vitejs.dev/guide/)
 
 [docsify](https://docsify.tb1043.com/#/?id=docsify)
 
