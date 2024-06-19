@@ -245,3 +245,36 @@ if (employee.isEligibleForFullBenefits)
 ```
 
 &emsp;&emsp;只要想上那么几秒钟，就能用代码解释你大部分的意图。很多时候，简单到只需要创建一个描述与注释所言同一事物的函数即可。
+
+## 4.3 好注释
+
+&emsp;&emsp;好些注释是必须的，也是有利的。来看看一些我认为值得写的注释。不过要记住，唯一真正好的注释是你想办法不去写注释。
+
+### 4.3.1 法律信息
+
+### 4.4.7 可怕的废话
+
+```java
+/** The name */
+private String name;
+
+/** The version */
+private String version;
+
+/** The licenseName */
+private String licenseName;
+```
+
+&emsp;&emsp;以上都是没有用的注释
+
+### 4.4.12 注释掉的代码
+
+直接把代码注释掉是最讨厌的做法。别这么干
+
+```java
+InputStreamResponse response = new InputStreamResponse();
+response.setBody(new ByteArrayInputStream(body));
+// InputStream resultStream = formatter.getResultStream(response);
+// response.setContentType(formatter.getContentType());
+// response.setContentLength(body.length);
+```
