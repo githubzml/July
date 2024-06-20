@@ -278,3 +278,15 @@ response.setBody(new ByteArrayInputStream(body));
 // response.setContentType(formatter.getContentType());
 // response.setContentLength(body.length);
 ```
+
+## 第五章 格式
+
+## 第六章 对象和数据结构
+
+面向对象方式编程
+
+## 第七章 错误处理
+
+### 7.8 别传递 null 值
+
+&emsp;&emsp;在方法中返回 null 值是糟糕的做法，但将 null 值传递给其他方法就更糟糕了。除非 API 要求你向它传递 null 值，否则就尽可能避免传递 null 值。
