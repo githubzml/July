@@ -29,6 +29,8 @@
 
   - [vue-router](Vue/vue-router.md)
 
+  - [vitecli](Vue/vitecli.md)
+
 - [浏览器](浏览器/index.md)
 
 - [单词](Word/index.md)
