@@ -147,3 +147,25 @@ tsconfig.json
     }
   },
 ```
+
+# Vue 项目中获取本地的 json 文件数据
+
+![alt text](index/assets/image.png)
+
+![alt text](index/assets/image-1.png)
+
+2. 然后到需要使用的地方通过 axios 获取本地数据，代码如下：
+
+```js
+  getMenuData() {
+      axios.get('/menu.json')
+        .then(result => {
+          console.log('getMenuData', result)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+```
+
+![alt text](index/assets/image-2.png)
