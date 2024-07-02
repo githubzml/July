@@ -62,7 +62,9 @@ declare module "*.vue" {
 
 2. 在 ”tsconfig.json“ 中，将第二步中创建的文件 "env.d.ts"（或者你自己新建的其他名称的 .d.ts 文件）添加到 include 中
 
-# vite+vue3+ts 中的 vue-router 基本配置
+# vite+vue3+ts 中的 vue-router index 配置
+
+index.ts
 
 ```ts
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
@@ -76,6 +78,60 @@ export const router = createRouter({
   history: createWebHashHistory(),
   routes: [...routes] as AddRouteRecordRaw[],
 });
+```
+
+# vite+vue3+ts 中的 vue-router routes 配置
+
+routes.ts
+
+```ts
+import HomeView from "@/components/HomeView.vue";
+
+import Layout from "../views/layout/layout.vue";
+
+import Home from "../views/layout/home/home.vue";
+import Classify from "../views/layout/classify/classify.vue";
+import Shoppingcar from "../views/layout/shoppingcar/shopping.vue";
+import My from "../views/layout/my/my.vue";
+
+import Login from "../views/login/login.vue";
+import Search from "../views/search/search.vue";
+const routes = [
+  { path: "/", component: HomeView },
+  {
+    path: "/layout",
+    component: Layout,
+    redirect: "/layout/home",
+    children: [
+      { path: "home", component: Home },
+      { path: "classify", component: Classify },
+      { path: "shoppingcar", component: Shoppingcar },
+      { path: "my", component: My },
+    ],
+  },
+  { path: "/login", component: Login },
+  { path: "/search", component: Search },
+  // {
+  //   path: "/404",
+  //   name: "404page",
+  //   component: NotFoundComponent,
+  // },
+  // { path: "/:pathMatch(.*)", redirect: "/404", hidden: true },
+];
+export default routes;
+```
+
+# vite+vue3+ts 中的 vue-router 页面配置
+
+```vue
+<template>
+  <div>
+    <!-- <router-link to="/">首页</router-link> | 
+    <router-link to="/about">关于</router-link> -->
+
+    <router-view></router-view>
+  </div>
+</template>
 ```
 
 # package.json "exports". The 'vuex' library may need to update its package.js
