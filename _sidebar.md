@@ -29,8 +29,6 @@
 
   - [vue-router](Vue/vue-router.md)
 
-  - [vitecli](Vue/vitecli.md)
-
 - [浏览器](浏览器/index.md)
 
 - [单词](Word/index.md)
@@ -51,7 +49,13 @@
 
 - [Mac 快捷键](Mac/index.md)
 
-- [Vite](Vite/index.md)
+- Vite
+
+  - [Vite](Vite/index.md)
+
+  - [vitecli](Vue/vitecli.md)
+
+  - [Vite 插件](Vite/vite插件.md)
 
 - [问题](Question/index.md)
 

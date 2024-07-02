@@ -9,8 +9,32 @@ nvm 常用命令:
 - nvm uninstall 10.5.0 //删除已安装的指定版本，语法与 install 类似
 - nvm alias //给不同的版本号添加别名
 - nvm unalias //删除已定义的别名
-- `nvm reinstall-packages <version>` //在当前版本 node 环境下，重新全局安装指定版本号的 npm 包
+- nvm reinstall-packages <version> //在当前版本 node 环境下，重新全局安装指定版本号的 npm 包
 - nvm current //显示当前的版本
+
+# 清除缓存命令
+
+- npm cache clean --force // 删除缓存
+- yarn cache clean // 清除 yarn 缓存
+- pnpm store prune // 清除 pnpm 缓存
+
+# 什么是 npx?
+
+一般来说，调用 Mocha ，只能在项目脚本和 package.json 的 scripts 字段里面， 如果想在命令行下调用，必须像下面这样。
+
+项目的根目录下执行
+
+```sh
+$ node-modules/.bin/mocha --version
+```
+
+npx 就是想解决这个问题，让项目内部安装的模块用起来更方便，只要像下面这样调用就行了。
+
+```sh
+$ npx mocha --version
+```
+
+[参考](https://www.ruanyifeng.com/blog/2019/02/npx.html)
 
 # Npm 快速了解 package
 
@@ -66,4 +90,27 @@ npm config set registry https://registry.npmjs.org/
 
 ```sh
  npm config set registry https://registry.npmmirror.com
+```
+
+# 查看 npm 和 yarn ,pnpm 全局安装路径
+
+```sh
+npm config get prefix
+
+yarn global dir
+
+pnpm store path
+
+```
+
+Npm：Npm 是 Node.js 的默认包管理器，具有自动化安装、删除和更新依赖包的功能。它是广泛使用的工具之一，具有丰富的资源和文档。
+
+Pnpm：Pnpm 是一个快速、磁盘空间友好型的包管理器，采用硬链接来缓存依赖包，同时支持类似于 Npm 的命令。它通常比 Npm 更快、更高效。
+
+Cnpm：Cnpm 是 Npm 的淘宝镜像版本，支持 Npm 的所有命令，并且提供了国内下载速度更快的依赖包源。对于中国用户来说，由于 cnpm 的镜像站点在
+
+# 查看全局已安装 包
+
+```sh
+$ npm ls -g
 ```
