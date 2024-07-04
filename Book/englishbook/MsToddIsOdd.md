@@ -8,4 +8,20 @@
 
 &emsp;&emsp;So this one morning the bus got to school a little early,and I want to kill some time in the free stuff room.I saw a really cool black T-shirt with a lighting bolt across the back.It was way cooler than the shirt I was wearing.So I took my shirt off and put the cool one on.It fit perfectly.I stuffed my old,boring shirt in my backpack.
 
-&emsp;&emsp;It was almost time to pledge the alle-glance.So I went to class.The kids were putting their backpacks and lunch boxes in their cubbies.
+&emsp;&emsp;It was almost time to pledge the alle-glance.So I went to class.The kids were putting their backpacks and lunch boxes in their cubbies.Our teacher,Miss Daisy,wasn't there yet.That was weird. She usually gets to school before any of us.
+
+&emsp;&emsp;"Where's Miss Daisy?" asked Neil,who everybody calls "the nud kid."He actually wears clothes,but we call him "the nud kid" anyway.It's a long story.
+
+&emsp;&emsp;"Maybe she got lost",Michael said.
+
+&emsp;&emsp;Suddenly the door opend.We all looked up.But it wasn't Miss Daisy.
+
+&emsp;&emsp;It was Andrea Young,this really annoying little Miss Perfect girl with curly brown hair who I hate.She's such a nerd,She even keeps a dictionary on her desk in case she ever has to look up a word.
+
+&emsp;&emsp;"Where were you ,Andrea?"asked her equally annoying crybaby friend,Emily."I was worried that you were sick.There's something going around,you know".
+
+&emsp;&emsp;"I wasn't sick,"Andrea said."I had to go to Mr Klutz's office."
+
+&emsp;&emsp;"Oooooh!"we went.
+
+&emsp;&emsp;Mr Klutz is the principal of the school.He also has no hair.Kids get sent to his office when they do something bad.
