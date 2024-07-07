@@ -25,3 +25,27 @@
 &emsp;&emsp;"Oooooh!"we went.
 
 &emsp;&emsp;Mr Klutz is the principal of the school.He also has no hair.Kids get sent to his office when they do something bad.
+
+&emsp;&emsp;"Did you don something bad?" asked Emily, all concerned.
+
+&emsp;&emsp;"Of curse not!"Andrea said."Mr. Klutz called me in to say I'm going to be in the gifted and talented program!"
+
+&emsp;&emsp;Oh man! that figured.The gifted and talented program is for dorks, dweebs,nerd, and know-it-alls Andrea who are perfect in every way.We all took some dumb test a few weeks ago,and Andrea probably got the best score in the whole school.
+
+&emsp;&emsp;"Isn't that fabulous?"Andrea said."I'm gifted and talented!"
+
+&emsp;&emsp;"What' your talent?"I asked her."Being annoying?"
+
+&emsp;&emsp;Some of the kids laughed. Andrea gave me one of her mean looks.
+
+&emsp;&emsp;"I like your shirt ,Arlo," she said. "Where did you get it?"
+
+&emsp;&emsp;"None of your beeswax,"I told her.I hate when Andrea calls me by my real name.
+
+&emsp;&emsp;"Oh yeah?"she said. "Well ,I think it is my beeswax,beacuse that's my shirt."
+
+&emsp;&emsp;"What?!"
+
+&emsp;&emsp;"That shirt fell out of my backpack last week,"Andrea said."I was wondering where it was."
+
+&emsp;&emsp;Everybody started giggling. I thought I was gonna die. I was wearing a girl's shirt! Not only was i wearing a girl's shirt,but it was Andrea's shirt! Her girl cooties were crawling all over me! It was disgusting. I thought I was gonna throw up.
