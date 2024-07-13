@@ -95,7 +95,11 @@
 
 - [古文观止](古文观止/index.md)
 
-- [MsToddIsOdd](Book/englishbook/MsToddIsOdd.md)
+- MsToddIsOdd
+
+  - [The Free Stuff Room](Book/englishbook/MsToddIsOdd.md)
+
+  - [Something Going Around](Book/englishbook/SomethingGoingAround.md)
 
 - [历史是本管理书](Book/历史是本管理书/历史是本管理书.md)
 

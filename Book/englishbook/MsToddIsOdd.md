@@ -49,3 +49,9 @@
 &emsp;&emsp;"That shirt fell out of my backpack last week,"Andrea said."I was wondering where it was."
 
 &emsp;&emsp;Everybody started giggling. I thought I was gonna die. I was wearing a girl's shirt! Not only was i wearing a girl's shirt,but it was Andrea's shirt! Her girl cooties were crawling all over me! It was disgusting. I thought I was gonna throw up.
+
+&emsp;&emsp;"Ooooh!"Ryan said. "A.J is wearing Andrea's shirt.That must be in love!"
+
+&emsp;&emsp;"When are you gonna get married?" asked Michael.
+
+&emsp;&emsp;If those guys were't my best friende,I would hate then.
