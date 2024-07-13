@@ -13,4 +13,4 @@ annotated 给...做注释
 
 energy 能源
 
-
+Stock Keeping Unit 库存单位
