@@ -57,7 +57,13 @@
 
   - [Vite 插件](Vite/vite插件.md)
 
-- [问题](Question/index.md)
+- 问题
+
+  - [开发过程中遇到那些问题](Question/index.md)
+
+  - [React 开发问题](Question/reactQ.md)
+
+  - [小程序 开发问题](Question/miniprogram.md)
 
 - [常见问题，命令](Question/questionCommand.md)
 
