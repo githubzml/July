@@ -29,6 +29,10 @@
 
   - [vue-router](Vue/vue-router.md)
 
+- React
+
+  - [Vite+React+TS](React/vite-react-ts.md)
+
 - [浏览器](浏览器/index.md)
 
 - [单词](Word/index.md)
