@@ -117,6 +117,8 @@
 
 - [工具网站插件](工具网站插件/index.md)
 
+- [免费接口](免费接口/index.md)
+
 <!-- "unplugin-auto-import": "^0.17.5", -->
 <!-- - Gradle
   - [Deploy](deploy.md)
