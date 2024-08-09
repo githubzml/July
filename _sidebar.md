@@ -113,6 +113,8 @@
 
 - [历史是本管理书](Book/历史是本管理书/历史是本管理书.md)
 
+- [Web 前端性能优化](Web前端性能优化/index.md)
+
 - [面试](Interview/index.md)
 
 - [移动端适配问题](移动端适配/index.md)
