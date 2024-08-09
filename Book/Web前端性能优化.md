@@ -72,6 +72,25 @@ function process(){
 
 值得注意的是，document 属于全局作用对象，位于作用域链的最深处，标识符在解析过程中会被最后解析到。由于它在函数中使用不止一次，所以可以考虑将其声明为一个局部变量，以提升其在作用域链中的查找顺序。
 
+&emsp;&emsp;另外还需要有注意的一点是，计算类名为 img 的所有 DOM 节点数量的语句 imgs.length 执行了不止一遍。当查询所得到的 DOM 节点列表存储到 imgs 后，每次通过属性名或者索引读取 imgs 的属性时， DOM 都会重复执行一次对页面元素的查找，这个过程本身就会很缓慢。
+
+&emsp;&emsp;上述代码优化后的写法如下:
+
+```js
+function process(){
+  const doc = document;
+  const target = doc.getElementById('target');
+  const imgs = doc.getElementByClassName('img');
+  const len = imgs.length;
+  for(let i = 0; i < len; i++){
+    const img = imgs[i];
+    // 省略相关处理流程
+    ...
+    target.appendChild(img);
+  }
+}
+```
+
 ### 5.2.1 匹配频率高的更快执行
 
 ```js
@@ -113,6 +132,62 @@ function calculateBonus(level, salary) {
   return strategies[level](salary);
 }
 ```
+
+### 5.2.2 循环语句
+
+&emsp;&emsp;标准循环体
+
+```js
+for (let i = 0; i < length; i++) {}
+```
+
+while 与 do while 区别，先执行一遍循环体，再判断循环结束条件
+
+```js
+let len = 5,
+  i = 0;
+
+while (i < len) {
+  // 循环体
+  i++;
+  console.log(i);
+}
+```
+
+```js
+let len = 5,
+  i = 0;
+
+do {
+  // 循环体
+  i++;
+  console.log(i);
+} while (i < 5);
+```
+
+&emsp;&emsp;循环效率对比
+
+```js
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// 较为差的循环结束判断条件
+for (let i = 0; i < arr.length; i++) {
+  // 省略循环体过程
+}
+
+// 较好的循环结束判断条件
+const len = arr.length;
+for (let i = 0; i < len; i++) {
+  // 省略循环体过程
+}
+
+// 更好的循环结束判断条件
+for (let k = len - 1; k >= 0; k--) {
+  // 省略循环体过程
+}
+```
+
+因为循环结束的判断是和常量 0 的比较，不存在对数组长度属性值的查找，或局部变量的读取，所以运算速度比较快。由于三种循环语句的执行性能基本类似，所以这里仅针对结束条件的判断进行优化。
 
 ### 5.4.2 异步队列
 
